@@ -1,0 +1,73 @@
+CASE
+Applicant ID: SGC0349
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 1 (no_checking_account)
+duration: 12
+credit_history: 4 (all_credits_at_this_bank_paid_back_duly)
+purpose: 0 (others)
+amount: 2121
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 3 (employed_1_to_below_4_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 30
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 2 (two_or_three_credits)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.5004630941
+Predicted class: 1
+Classification label: bad_credit
+
+TRAINING CODE
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+numeric_features = ['duration', 'amount', 'age']
+categorical_features = [
+    "status", "credit_history", "purpose", "savings",
+    "employment_duration", "installment_rate", "personal_status_sex",
+    "other_debtors", "present_residence", "property",
+    "other_installment_plans", "housing", "number_credits", "job",
+    "people_liable", "telephone", "foreign_worker",
+]
+
+# y_bad_credit was recoded so 1=bad credit and 0=good credit.
+preprocessor = ColumnTransformer([
+    ("numeric", StandardScaler(), numeric_features),
+    ("categorical", OneHotEncoder(
+        drop="first", handle_unknown="ignore", sparse_output=False
+    ), categorical_features),
+])
+pipeline = Pipeline([
+    ("preprocessor", preprocessor),
+    ("logistic_regression", LogisticRegression(
+        max_iter=2000, random_state=42
+    )),
+])
+pipeline.fit(X_train, y_train)
+probability_bad_credit = pipeline.predict_proba(customer)[0, 1]
+predicted_class = int(probability_bad_credit >= 0.5)
+```
+
+This condition shows how the model was trained, but it does not contain the
+learned intercept, learned coefficients, or fitted scaling statistics.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.

@@ -1,0 +1,20 @@
+{
+  "accuracy": 0.7133333333333334,
+  "roc_auc": 0.7512169312169312,
+  "pr_auc": 0.587028928353325,
+  "confusion_matrix": [
+    [
+      179,
+      31
+    ],
+    [
+      55,
+      35
+    ]
+  ],
+  "n_train": 700,
+  "n_test": 300,
+  "n_transformed_features": 54,
+  "positive_class": "1 = bad credit risk",
+  "threshold": 0.5
+}

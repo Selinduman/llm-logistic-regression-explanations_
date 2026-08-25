@@ -1,0 +1,2382 @@
+experiment_task,repetition,case_id,applicant_id,condition,model_id,temperature,response_id,prompt,prompt_character_count,prompt_word_count,raw_answer,parsed_answer,model_explanation,explanation_possible,true_logit,true_probability,true_class,true_classification,true_top_features,prompt_tokens,completion_tokens,total_tokens,error_message,explanation_possible_correct,appropriate_abstention,missing_model_information_identified,unsupported_feature_claim,logit_abs_error,probability_abs_error,reconstructed_class_error,top5_recall,direction_accuracy,contribution_mae,hallucination_rate,returned_feature_count,too_many_features,hallucinated_features
+explanation,1,339,SGC0340,customer_prediction_only,gpt-5.6-sol,1.0,chatcmpl-EGjbB4J6hNauDSqR0ejxVboAfqmOn,"CASE
+Applicant ID: SGC0340
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 4 (checking_balance_at_least_200_DM_or_salary_account)
+duration: 12
+credit_history: 2 (no_credits_taken_or_all_paid_back_duly)
+purpose: 1 (new_car)
+amount: 1413
+savings: 4 (savings_500_to_below_1000_DM)
+employment_duration: 4 (employed_4_to_below_7_years)
+installment_rate: 3 (installment_rate_20_to_below_25_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 55
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 1 (yes)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.0033439220
+Predicted class: 0
+Classification label: good_credit
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",1181,121,"{""explanation_possible"":false,""reconstructed_logit"":null,""reconstructed_probability"":null,""reconstructed_class"":0,""top_features"":[],""model_explanation"":""The supplied model output reports a bad-credit probability of 0.0033439220. Because this is below the 0.50 classification threshold, the resulting class is 0, labeled good_credit. This is a model prediction, not confirmation of the applicant's future credit outcome. A feature-level explanation is not supported: although the applicant's raw values are provided, the fitted coefficients, intercept, feature encoding, and exact transformed values are absent. Therefore, the strongest contributing features and their directions cannot be identified without making unsupported claims."",""limitations"":[""The fitted logistic-regression coefficients and intercept were not supplied."",""The feature encoding and exact transformed applicant values used by the model were not supplied."",""The reported probability cannot be independently reconstructed from the raw inputs."",""Applicant-specific feature contributions cannot be calculated or ranked; the reconstructed class only follows from comparing the reported probability with the supplied threshold.""]}","{""explanation_possible"":false,""reconstructed_logit"":null,""reconstructed_probability"":null,""reconstructed_class"":0,""top_features"":[],""model_explanation"":""The supplied model output reports a bad-credit probability of 0.0033439220. Because this is below the 0.50 classification threshold, the resulting class is 0, labeled good_credit. This is a model prediction, not confirmation of the applicant's future credit outcome. A feature-level explanation is not supported: although the applicant's raw values are provided, the fitted coefficients, intercept, feature encoding, and exact transformed values are absent. Therefore, the strongest contributing features and their directions cannot be identified without making unsupported claims."",""limitations"":[""The fitted logistic-regression coefficients and intercept were not supplied."",""The feature encoding and exact transformed applicant values used by the model were not supplied."",""The reported probability cannot be independently reconstructed from the raw inputs."",""Applicant-specific feature contributions cannot be calculated or ranked; the reconstructed class only follows from comparing the reported probability with the supplied threshold.""]}","The supplied model output reports a bad-credit probability of 0.0033439220. Because this is below the 0.50 classification threshold, the resulting class is 0, labeled good_credit. This is a model prediction, not confirmation of the applicant's future credit outcome. A feature-level explanation is not supported: although the applicant's raw values are provided, the fitted coefficients, intercept, feature encoding, and exact transformed values are absent. Therefore, the strongest contributing features and their directions cannot be identified without making unsupported claims.",False,-5.697261380799041,0.0033439220106291564,0,good_credit,"[""purpose=new_car"", ""status=checking_balance_at_least_200_DM_or_salary_account"", ""savings=savings_500_to_below_1000_DM"", ""employment_duration=employed_4_to_below_7_years"", ""personal_status_sex=male_married_or_widowed""]",1054,912,1966,,1,1,1.0,0,,,,,,,0.0,0,0,[]
+explanation,1,339,SGC0340,textual_description,gpt-5.6-sol,1.0,chatcmpl-EGjbRVwhYIgHC5eODKRL7pLneMEwx,"CASE
+Applicant ID: SGC0340
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 4 (checking_balance_at_least_200_DM_or_salary_account)
+duration: 12
+credit_history: 2 (no_credits_taken_or_all_paid_back_duly)
+purpose: 1 (new_car)
+amount: 1413
+savings: 4 (savings_500_to_below_1000_DM)
+employment_duration: 4 (employed_4_to_below_7_years)
+installment_rate: 3 (installment_rate_20_to_below_25_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 55
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 1 (yes)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.0033439220
+Predicted class: 0
+Classification label: good_credit
+
+MODEL AND FEATURE DESCRIPTION
+The prediction was produced by logistic regression. Logistic regression forms
+a linear combination of transformed input features and learned coefficients,
+then applies the sigmoid function to obtain the positive-class probability.
+Positive applicant-specific model contributions increase the estimated
+bad-credit risk and negative contributions decrease it.
+
+Feature definitions:
+- status: Status of the debtor's checking account with the bank.
+- duration: Credit duration in months.
+- credit_history: History of compliance with previous or concurrent credit contracts.
+- purpose: Purpose for which the credit is needed.
+- amount: Credit amount in DM after an undocumented monotonic transformation; the original amount cannot be recovered.
+- savings: Debtor's savings-account category.
+- employment_duration: Duration of employment with the current employer.
+- installment_rate: Installments as a percentage of disposable income.
+- personal_status_sex: Combined personal-status and sex category from the codebook.
+- other_debtors: Whether another debtor or guarantor supports the credit.
+- present_residence: Length of time at the present residence.
+- property: The debtor's most valuable property category.
+- age: Age in years.
+- other_installment_plans: Installment plans with providers other than this bank.
+- housing: Housing arrangement.
+- number_credits: Number of current or previous credits at this bank.
+- job: Employment or job qualification category.
+- people_liable: Number of people financially dependent on the debtor.
+- telephone: Whether a landline is registered in the customer's name.
+- foreign_worker: Whether the debtor is a foreign worker.
+
+The fitted intercept, fitted coefficients, transformed applicant values, and
+applicant-specific contributions are not supplied in this condition.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",3020,369,"{
+  ""explanation_possible"": false,
+  ""reconstructed_logit"": null,
+  ""reconstructed_probability"": null,
+  ""reconstructed_class"": 0,
+  ""top_features"": [],
+  ""model_explanation"": ""The supplied model output estimates a bad-credit probability of 0.0033439220. Because this is below the 0.50 classification threshold, the model assigned class 0, labeled good_credit. However, the supplied evidence does not show why particular applicant features produced this low probability: the fitted intercept, coefficients, exact transformed applicant values, and applicant-specific contributions are all missing. Therefore, no individual feature can be identified as increasing or decreasing the model's estimated bad-credit risk. This prediction is a model estimate, not confirmation of the applicant's future credit outcome."",
+  ""limitations"": [
+    ""The fitted intercept and feature coefficients were not supplied, so the model's linear score cannot be independently reconstructed."",
+    ""The exact transformed applicant values were not supplied."",
+    ""Applicant-specific feature contributions were not supplied and cannot be calculated from the raw values alone."",
+    ""The transformation applied to amount is undocumented."",
+    ""The supplied probability and class can be checked against the threshold, but the probability itself cannot be independently reproduced from the available model information.""
+  ]
+}","{""explanation_possible"":false,""reconstructed_logit"":null,""reconstructed_probability"":null,""reconstructed_class"":0,""top_features"":[],""model_explanation"":""The supplied model output estimates a bad-credit probability of 0.0033439220. Because this is below the 0.50 classification threshold, the model assigned class 0, labeled good_credit. However, the supplied evidence does not show why particular applicant features produced this low probability: the fitted intercept, coefficients, exact transformed applicant values, and applicant-specific contributions are all missing. Therefore, no individual feature can be identified as increasing or decreasing the model's estimated bad-credit risk. This prediction is a model estimate, not confirmation of the applicant's future credit outcome."",""limitations"":[""The fitted intercept and feature coefficients were not supplied, so the model's linear score cannot be independently reconstructed."",""The exact transformed applicant values were not supplied."",""Applicant-specific feature contributions were not supplied and cannot be calculated from the raw values alone."",""The transformation applied to amount is undocumented."",""The supplied probability and class can be checked against the threshold, but the probability itself cannot be independently reproduced from the available model information.""]}","The supplied model output estimates a bad-credit probability of 0.0033439220. Because this is below the 0.50 classification threshold, the model assigned class 0, labeled good_credit. However, the supplied evidence does not show why particular applicant features produced this low probability: the fitted intercept, coefficients, exact transformed applicant values, and applicant-specific contributions are all missing. Therefore, no individual feature can be identified as increasing or decreasing the model's estimated bad-credit risk. This prediction is a model estimate, not confirmation of the applicant's future credit outcome.",False,-5.697261380799041,0.0033439220106291564,0,good_credit,"[""purpose=new_car"", ""status=checking_balance_at_least_200_DM_or_salary_account"", ""savings=savings_500_to_below_1000_DM"", ""employment_duration=employed_4_to_below_7_years"", ""personal_status_sex=male_married_or_widowed""]",1393,735,2128,,1,1,1.0,0,,,,,,,0.0,0,0,[]
+explanation,1,339,SGC0340,training_code_only,gpt-5.6-sol,1.0,chatcmpl-EGjbfsaEFRdmxOGZr94fv00rqRT5i,"CASE
+Applicant ID: SGC0340
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 4 (checking_balance_at_least_200_DM_or_salary_account)
+duration: 12
+credit_history: 2 (no_credits_taken_or_all_paid_back_duly)
+purpose: 1 (new_car)
+amount: 1413
+savings: 4 (savings_500_to_below_1000_DM)
+employment_duration: 4 (employed_4_to_below_7_years)
+installment_rate: 3 (installment_rate_20_to_below_25_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 55
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 1 (yes)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.0033439220
+Predicted class: 0
+Classification label: good_credit
+
+TRAINING CODE
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+numeric_features = ['duration', 'amount', 'age']
+categorical_features = [
+    ""status"", ""credit_history"", ""purpose"", ""savings"",
+    ""employment_duration"", ""installment_rate"", ""personal_status_sex"",
+    ""other_debtors"", ""present_residence"", ""property"",
+    ""other_installment_plans"", ""housing"", ""number_credits"", ""job"",
+    ""people_liable"", ""telephone"", ""foreign_worker"",
+]
+
+# y_bad_credit was recoded so 1=bad credit and 0=good credit.
+preprocessor = ColumnTransformer([
+    (""numeric"", StandardScaler(), numeric_features),
+    (""categorical"", OneHotEncoder(
+        drop=""first"", handle_unknown=""ignore"", sparse_output=False
+    ), categorical_features),
+])
+pipeline = Pipeline([
+    (""preprocessor"", preprocessor),
+    (""logistic_regression"", LogisticRegression(
+        max_iter=2000, random_state=42
+    )),
+])
+pipeline.fit(X_train, y_train)
+probability_bad_credit = pipeline.predict_proba(customer)[0, 1]
+predicted_class = int(probability_bad_credit >= 0.5)
+```
+
+This condition shows how the model was trained, but it does not contain the
+learned intercept, learned coefficients, or fitted scaling statistics.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",2522,236,"{
+  ""explanation_possible"": false,
+  ""reconstructed_logit"": -5.697261,
+  ""reconstructed_probability"": 0.003343922,
+  ""reconstructed_class"": 0,
+  ""top_features"": [],
+  ""model_explanation"": ""The reported bad-credit probability of 0.003343922 corresponds to a logit of approximately -5.697261. Because this probability is below the 0.50 classification threshold, the reconstructed class is 0 (good credit risk). However, the supplied information does not support identifying which applicant features contributed most strongly or whether any specific feature increased or decreased the model's bad-credit log-odds. Such statements would require the fitted intercept, coefficients, exact StandardScaler statistics, and fitted OneHotEncoder category structure. The output is a model prediction, not confirmation of the applicant's future credit outcome."",
+  ""limitations"": [
+    ""The learned logistic-regression intercept and coefficients were not supplied, so applicant-specific feature contributions cannot be calculated or ranked."",
+    ""The fitted StandardScaler means and scales were not supplied, so the transformed values for duration, amount, and age cannot be reconstructed."",
+    ""The fitted OneHotEncoder categories and dropped reference categories were not supplied, so the exact categorical model inputs cannot be reconstructed."",
+    ""The logit was derived from the reported probability rather than independently reproduced from the fitted model parameters.""
+  ]
+}","{""explanation_possible"":false,""reconstructed_logit"":-5.697261,""reconstructed_probability"":0.003343922,""reconstructed_class"":0,""top_features"":[],""model_explanation"":""The reported bad-credit probability of 0.003343922 corresponds to a logit of approximately -5.697261. Because this probability is below the 0.50 classification threshold, the reconstructed class is 0 (good credit risk). However, the supplied information does not support identifying which applicant features contributed most strongly or whether any specific feature increased or decreased the model's bad-credit log-odds. Such statements would require the fitted intercept, coefficients, exact StandardScaler statistics, and fitted OneHotEncoder category structure. The output is a model prediction, not confirmation of the applicant's future credit outcome."",""limitations"":[""The learned logistic-regression intercept and coefficients were not supplied, so applicant-specific feature contributions cannot be calculated or ranked."",""The fitted StandardScaler means and scales were not supplied, so the transformed values for duration, amount, and age cannot be reconstructed."",""The fitted OneHotEncoder categories and dropped reference categories were not supplied, so the exact categorical model inputs cannot be reconstructed."",""The logit was derived from the reported probability rather than independently reproduced from the fitted model parameters.""]}","The reported bad-credit probability of 0.003343922 corresponds to a logit of approximately -5.697261. Because this probability is below the 0.50 classification threshold, the reconstructed class is 0 (good credit risk). However, the supplied information does not support identifying which applicant features contributed most strongly or whether any specific feature increased or decreased the model's bad-credit log-odds. Such statements would require the fitted intercept, coefficients, exact StandardScaler statistics, and fitted OneHotEncoder category structure. The output is a model prediction, not confirmation of the applicant's future credit outcome.",False,-5.697261380799041,0.0033439220106291564,0,good_credit,"[""purpose=new_car"", ""status=checking_balance_at_least_200_DM_or_salary_account"", ""savings=savings_500_to_below_1000_DM"", ""employment_duration=employed_4_to_below_7_years"", ""personal_status_sex=male_married_or_widowed""]",1360,761,2121,,1,1,1.0,0,,,,,,,0.0,0,0,[]
+explanation,1,339,SGC0340,learned_parameters,gpt-5.6-sol,1.0,chatcmpl-EGjbskiYkffAYrdOCnq1DNtkqmlbq,"CASE
+Applicant ID: SGC0340
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 4 (checking_balance_at_least_200_DM_or_salary_account)
+duration: 12
+credit_history: 2 (no_credits_taken_or_all_paid_back_duly)
+purpose: 1 (new_car)
+amount: 1413
+savings: 4 (savings_500_to_below_1000_DM)
+employment_duration: 4 (employed_4_to_below_7_years)
+installment_rate: 3 (installment_rate_20_to_below_25_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 55
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 1 (yes)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.0033439220
+Predicted class: 0
+Classification label: good_credit
+
+LEARNED MODEL PARAMETERS
+Model type: logistic regression
+Positive class: 1 = bad credit risk
+Equation: z = intercept + sum(coefficient_j * transformed_value_j)
+Probability: sigmoid(z)
+Numeric preprocessing: (raw value - training mean) / training standard deviation
+Categorical preprocessing: one-hot encoding with the first category as reference.
+Intercept: -0.2894631489
+
+FITTED NUMERIC SCALING
+| feature | training_mean | training_standard_deviation |
+|---|---:|---:|
+| duration | 20.7614285714 | 12.0471193102 |
+| amount | 3212.2128571429 | 2797.1376735320 |
+| age | 35.7928571429 | 11.0970372034 |
+
+ONE-HOT REFERENCE CATEGORIES
+- status: 1 (no_checking_account)
+- credit_history: 0 (delay_in_paying_in_the_past)
+- purpose: 0 (others)
+- savings: 1 (unknown_or_no_savings_account)
+- employment_duration: 1 (unemployed)
+- installment_rate: 1 (installment_rate_at_least_35_percent)
+- personal_status_sex: 1 (male_divorced_or_separated)
+- other_debtors: 1 (none)
+- present_residence: 1 (residence_below_1_year)
+- property: 1 (unknown_or_no_property)
+- other_installment_plans: 1 (bank)
+- housing: 1 (for_free)
+- number_credits: 1 (one_credit)
+- job: 1 (unemployed_or_unskilled_non_resident)
+- people_liable: 1 (three_or_more_people_liable)
+- telephone: 1 (no_telephone)
+- foreign_worker: 1 (yes)
+
+| transformed_feature | fitted_coefficient | transformed_customer_value |
+|---|---:|---:|
+| age_standardized | -0.0081267242 | 1.7308352225 |
+| amount_standardized | 0.4061854968 | -0.6432335720 |
+| credit_history=all_credits_at_this_bank_paid_back_duly | -1.3303229846 | 0.0000000000 |
+| credit_history=critical_account_or_other_credits_elsewhere | 0.4888820981 | 0.0000000000 |
+| credit_history=existing_credits_paid_back_duly_until_now | -0.8277684084 | 0.0000000000 |
+| credit_history=no_credits_taken_or_all_paid_back_duly | -0.0581539415 | 1.0000000000 |
+| duration_standardized | 0.2873191622 | -0.7272633686 |
+| employment_duration=employed_1_to_below_4_years | -0.1455202068 | 0.0000000000 |
+| employment_duration=employed_4_to_below_7_years | -0.8747210416 | 1.0000000000 |
+| employment_duration=employed_at_least_7_years | -0.2910465925 | 0.0000000000 |
+| employment_duration=employed_below_1_year | -0.0947637589 | 0.0000000000 |
+| foreign_worker=no | 0.9246035243 | 0.0000000000 |
+| housing=own | -0.3255176570 | 0.0000000000 |
+| housing=rent | -0.3798455550 | 1.0000000000 |
+| installment_rate=installment_rate_20_to_below_25_percent | 0.4636842837 | 1.0000000000 |
+| installment_rate=installment_rate_25_to_below_35_percent | 0.2461032348 | 0.0000000000 |
+| installment_rate=installment_rate_below_20_percent | 0.8178230443 | 0.0000000000 |
+| job=manager_self_employed_or_highly_qualified_employee | 0.5540419369 | 0.0000000000 |
+| job=skilled_employee_or_official | 0.5538300296 | 1.0000000000 |
+| job=unskilled_resident | 0.4160525244 | 0.0000000000 |
+| number_credits=at_least_six_credits | -0.0718545217 | 0.0000000000 |
+| number_credits=four_or_five_credits | 0.1610654323 | 0.0000000000 |
+| number_credits=two_or_three_credits | 0.5681976567 | 0.0000000000 |
+| other_debtors=co_applicant | 0.3252315198 | 0.0000000000 |
+| other_debtors=guarantor | -0.9594853869 | 0.0000000000 |
+| other_installment_plans=none | -0.4805033249 | 1.0000000000 |
+| other_installment_plans=stores | -0.0437096143 | 0.0000000000 |
+| people_liable=zero_to_two_people_liable | -0.2104750711 | 1.0000000000 |
+| personal_status_sex=female_non_single_or_male_single | 0.2431963319 | 0.0000000000 |
+| personal_status_sex=female_single | -0.1684095768 | 0.0000000000 |
+| personal_status_sex=male_married_or_widowed | -0.6176617098 | 1.0000000000 |
+| present_residence=residence_1_to_below_4_years | 0.4971910547 | 1.0000000000 |
+| present_residence=residence_4_to_below_7_years | 0.4109739249 | 0.0000000000 |
+| present_residence=residence_at_least_7_years | 0.2086160973 | 0.0000000000 |
+| property=building_savings_agreement_or_life_insurance | -0.0058302304 | 0.0000000000 |
+| property=car_or_other_property | 0.4571736141 | 1.0000000000 |
+| property=real_estate | 0.6071684096 | 0.0000000000 |
+| purpose=business | -0.8212706923 | 0.0000000000 |
+| purpose=domestic_appliances | 0.2369765041 | 0.0000000000 |
+| purpose=furniture_or_equipment | -0.7090760876 | 0.0000000000 |
+| purpose=new_car | -1.5925077719 | 1.0000000000 |
+| purpose=radio_or_television | -0.1969691109 | 0.0000000000 |
+| purpose=repairs | 0.3015971280 | 0.0000000000 |
+| purpose=retraining | -0.4704448700 | 0.0000000000 |
+| purpose=used_car | -0.5521915592 | 0.0000000000 |
+| purpose=vacation | -0.5440597221 | 0.0000000000 |
+| savings=savings_100_to_below_500_DM | -0.3626509791 | 0.0000000000 |
+| savings=savings_500_to_below_1000_DM | -1.1394261896 | 1.0000000000 |
+| savings=savings_at_least_1000_DM | -0.8673723767 | 0.0000000000 |
+| savings=savings_below_100_DM | -0.1970421085 | 0.0000000000 |
+| status=checking_balance_0_to_below_200_DM | -0.9789646204 | 0.0000000000 |
+| status=checking_balance_at_least_200_DM_or_salary_account | -1.5420877385 | 1.0000000000 |
+| status=checking_balance_below_0_DM | -0.2317454163 | 0.0000000000 |
+| telephone=telephone_under_customer_name | -0.3011228914 | 0.0000000000 |
+
+Applicant-specific contributions are not precomputed in this condition.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",6433,665,"{""explanation_possible"":true,""reconstructed_logit"":-5.697261381,""reconstructed_probability"":0.003343922,""reconstructed_class"":0,""top_features"":[{""feature"":""purpose=new_car"",""customer_value"":""1 (new_car)"",""coefficient"":-1.5925077719,""transformed_value"":1.0,""contribution"":-1.5925077719,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 1.5925 relative to the purpose reference category.""},{""feature"":""status=checking_balance_at_least_200_DM_or_salary_account"",""customer_value"":""4 (checking_balance_at_least_200_DM_or_salary_account)"",""coefficient"":-1.5420877385,""transformed_value"":1.0,""contribution"":-1.5420877385,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 1.5421 relative to the status reference category.""},{""feature"":""savings=savings_500_to_below_1000_DM"",""customer_value"":""4 (savings_500_to_below_1000_DM)"",""coefficient"":-1.1394261896,""transformed_value"":1.0,""contribution"":-1.1394261896,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 1.1394 relative to the savings reference category.""},{""feature"":""employment_duration=employed_4_to_below_7_years"",""customer_value"":""4 (employed_4_to_below_7_years)"",""coefficient"":-0.8747210416,""transformed_value"":1.0,""contribution"":-0.8747210416,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 0.8747 relative to the employment_duration reference category.""},{""feature"":""personal_status_sex=male_married_or_widowed"",""customer_value"":""3 (male_married_or_widowed)"",""coefficient"":-0.6176617098,""transformed_value"":1.0,""contribution"":-0.6176617098,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 0.6177 relative to the personal_status_sex reference category.""}],""model_explanation"":""Using the supplied intercept, coefficients, and transformed applicant values, the reconstructed bad-credit logit is -5.697261381 and the corresponding probability is 0.003343922 (about 0.3344%). This is below the 0.50 threshold, so the reconstructed class is 0, labeled good_credit. The strongest applicant-specific contributions lowering bad-credit log-odds were purpose=new_car (-1.5925), status=checking_balance_at_least_200_DM_or_salary_account (-1.5421), savings=savings_500_to_below_1000_DM (-1.1394), employment_duration=employed_4_to_below_7_years (-0.8747), and personal_status_sex=male_married_or_widowed (-0.6177). Some active features moved in the opposite direction, including job=skilled_employee_or_official (+0.5538), present_residence=residence_1_to_below_4_years (+0.4972), installment_rate=installment_rate_20_to_below_25_percent (+0.4637), and property=car_or_other_property (+0.4572), but these did not outweigh the combined negative contributions. These are model associations relative to the encoded reference categories, not causal effects, and the prediction is not a confirmed future outcome."",""limitations"":[""Coefficients and transformed values are supplied to finite precision, so reconstructed quantities may be subject to minor rounding error."",""One-hot contributions are comparisons with the supplied reference categories; they are not standalone causal effects."",""No training-performance, calibration, validation, or uncertainty information was supplied, so the model's reliability for this applicant cannot be assessed from this case alone."",""The predicted class describes the frozen model's output and does not establish the applicant's actual future credit outcome.""]}","{""explanation_possible"":true,""reconstructed_logit"":-5.697261381,""reconstructed_probability"":0.003343922,""reconstructed_class"":0,""top_features"":[{""feature"":""purpose=new_car"",""customer_value"":""1 (new_car)"",""coefficient"":-1.5925077719,""transformed_value"":1.0,""contribution"":-1.5925077719,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 1.5925 relative to the purpose reference category.""},{""feature"":""status=checking_balance_at_least_200_DM_or_salary_account"",""customer_value"":""4 (checking_balance_at_least_200_DM_or_salary_account)"",""coefficient"":-1.5420877385,""transformed_value"":1.0,""contribution"":-1.5420877385,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 1.5421 relative to the status reference category.""},{""feature"":""savings=savings_500_to_below_1000_DM"",""customer_value"":""4 (savings_500_to_below_1000_DM)"",""coefficient"":-1.1394261896,""transformed_value"":1.0,""contribution"":-1.1394261896,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 1.1394 relative to the savings reference category.""},{""feature"":""employment_duration=employed_4_to_below_7_years"",""customer_value"":""4 (employed_4_to_below_7_years)"",""coefficient"":-0.8747210416,""transformed_value"":1.0,""contribution"":-0.8747210416,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 0.8747 relative to the employment_duration reference category.""},{""feature"":""personal_status_sex=male_married_or_widowed"",""customer_value"":""3 (male_married_or_widowed)"",""coefficient"":-0.6176617098,""transformed_value"":1.0,""contribution"":-0.6176617098,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active one-hot feature reduced the model's bad-credit log-odds by 0.6177 relative to the personal_status_sex reference category.""}],""model_explanation"":""Using the supplied intercept, coefficients, and transformed applicant values, the reconstructed bad-credit logit is -5.697261381 and the corresponding probability is 0.003343922 (about 0.3344%). This is below the 0.50 threshold, so the reconstructed class is 0, labeled good_credit. The strongest applicant-specific contributions lowering bad-credit log-odds were purpose=new_car (-1.5925), status=checking_balance_at_least_200_DM_or_salary_account (-1.5421), savings=savings_500_to_below_1000_DM (-1.1394), employment_duration=employed_4_to_below_7_years (-0.8747), and personal_status_sex=male_married_or_widowed (-0.6177). Some active features moved in the opposite direction, including job=skilled_employee_or_official (+0.5538), present_residence=residence_1_to_below_4_years (+0.4972), installment_rate=installment_rate_20_to_below_25_percent (+0.4637), and property=car_or_other_property (+0.4572), but these did not outweigh the combined negative contributions. These are model associations relative to the encoded reference categories, not causal effects, and the prediction is not a confirmed future outcome."",""limitations"":[""Coefficients and transformed values are supplied to finite precision, so reconstructed quantities may be subject to minor rounding error."",""One-hot contributions are comparisons with the supplied reference categories; they are not standalone causal effects."",""No training-performance, calibration, validation, or uncertainty information was supplied, so the model's reliability for this applicant cannot be assessed from this case alone."",""The predicted class describes the frozen model's output and does not establish the applicant's actual future credit outcome.""]}","Using the supplied intercept, coefficients, and transformed applicant values, the reconstructed bad-credit logit is -5.697261381 and the corresponding probability is 0.003343922 (about 0.3344%). This is below the 0.50 threshold, so the reconstructed class is 0, labeled good_credit. The strongest applicant-specific contributions lowering bad-credit log-odds were purpose=new_car (-1.5925), status=checking_balance_at_least_200_DM_or_salary_account (-1.5421), savings=savings_500_to_below_1000_DM (-1.1394), employment_duration=employed_4_to_below_7_years (-0.8747), and personal_status_sex=male_married_or_widowed (-0.6177). Some active features moved in the opposite direction, including job=skilled_employee_or_official (+0.5538), present_residence=residence_1_to_below_4_years (+0.4972), installment_rate=installment_rate_20_to_below_25_percent (+0.4637), and property=car_or_other_property (+0.4572), but these did not outweigh the combined negative contributions. These are model associations relative to the encoded reference categories, not causal effects, and the prediction is not a confirmed future outcome.",True,-5.697261380799041,0.0033439220106291564,0,good_credit,"[""purpose=new_car"", ""status=checking_balance_at_least_200_DM_or_salary_account"", ""savings=savings_500_to_below_1000_DM"", ""employment_duration=employed_4_to_below_7_years"", ""personal_status_sex=male_married_or_widowed""]",2916,3001,5917,,1,1,,0,,,,1.0,1.0,1.7054091472346045e-11,0.0,5,0,[]
+explanation,1,339,SGC0340,full_structured_package,gpt-5.6-sol,1.0,chatcmpl-EGjcavEwa9fr3Sj95bnOpixyDgl69,"CASE
+Applicant ID: SGC0340
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 4 (checking_balance_at_least_200_DM_or_salary_account)
+duration: 12
+credit_history: 2 (no_credits_taken_or_all_paid_back_duly)
+purpose: 1 (new_car)
+amount: 1413
+savings: 4 (savings_500_to_below_1000_DM)
+employment_duration: 4 (employed_4_to_below_7_years)
+installment_rate: 3 (installment_rate_20_to_below_25_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 55
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 1 (yes)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.0033439220
+Predicted class: 0
+Classification label: good_credit
+
+COMPLETE STRUCTURED EVIDENCE PACKAGE
+```json
+{
+  ""target"": {
+    ""positive_class"": ""bad_credit"",
+    ""positive_class_value"": 1,
+    ""negative_class"": ""good_credit"",
+    ""negative_class_value"": 0,
+    ""decision_threshold"": 0.5
+  },
+  ""formula"": {
+    ""logit"": ""intercept + sum(log_odds_contribution)"",
+    ""probability"": ""sigmoid(logit)"",
+    ""feature_contribution"": ""coefficient * transformed_customer_value""
+  },
+  ""intercept"": -0.28946314891139896,
+  ""numeric_scaling"": {
+    ""duration"": {
+      ""training_mean"": 20.76142857142857,
+      ""training_standard_deviation"": 12.047119310169938
+    },
+    ""amount"": {
+      ""training_mean"": 3212.212857142857,
+      ""training_standard_deviation"": 2797.137673531969
+    },
+    ""age"": {
+      ""training_mean"": 35.792857142857144,
+      ""training_standard_deviation"": 11.097037203410537
+    }
+  },
+  ""one_hot_reference_categories"": {
+    ""status"": ""1 (no_checking_account)"",
+    ""credit_history"": ""0 (delay_in_paying_in_the_past)"",
+    ""purpose"": ""0 (others)"",
+    ""savings"": ""1 (unknown_or_no_savings_account)"",
+    ""employment_duration"": ""1 (unemployed)"",
+    ""installment_rate"": ""1 (installment_rate_at_least_35_percent)"",
+    ""personal_status_sex"": ""1 (male_divorced_or_separated)"",
+    ""other_debtors"": ""1 (none)"",
+    ""present_residence"": ""1 (residence_below_1_year)"",
+    ""property"": ""1 (unknown_or_no_property)"",
+    ""other_installment_plans"": ""1 (bank)"",
+    ""housing"": ""1 (for_free)"",
+    ""number_credits"": ""1 (one_credit)"",
+    ""job"": ""1 (unemployed_or_unskilled_non_resident)"",
+    ""people_liable"": ""1 (three_or_more_people_liable)"",
+    ""telephone"": ""1 (no_telephone)"",
+    ""foreign_worker"": ""1 (yes)""
+  },
+  ""features"": [
+    {
+      ""feature"": ""age_standardized"",
+      ""coefficient"": -0.0081267242,
+      ""transformed_customer_value"": 1.7308352225,
+      ""log_odds_contribution"": -0.0140660206
+    },
+    {
+      ""feature"": ""amount_standardized"",
+      ""coefficient"": 0.4061854968,
+      ""transformed_customer_value"": -0.643233572,
+      ""log_odds_contribution"": -0.261272148
+    },
+    {
+      ""feature"": ""credit_history=all_credits_at_this_bank_paid_back_duly"",
+      ""coefficient"": -1.3303229846,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""credit_history=critical_account_or_other_credits_elsewhere"",
+      ""coefficient"": 0.4888820981,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""credit_history=existing_credits_paid_back_duly_until_now"",
+      ""coefficient"": -0.8277684084,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""credit_history=no_credits_taken_or_all_paid_back_duly"",
+      ""coefficient"": -0.0581539415,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.0581539415
+    },
+    {
+      ""feature"": ""duration_standardized"",
+      ""coefficient"": 0.2873191622,
+      ""transformed_customer_value"": -0.7272633686,
+      ""log_odds_contribution"": -0.2089567017
+    },
+    {
+      ""feature"": ""employment_duration=employed_1_to_below_4_years"",
+      ""coefficient"": -0.1455202068,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""employment_duration=employed_4_to_below_7_years"",
+      ""coefficient"": -0.8747210416,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.8747210416
+    },
+    {
+      ""feature"": ""employment_duration=employed_at_least_7_years"",
+      ""coefficient"": -0.2910465925,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""employment_duration=employed_below_1_year"",
+      ""coefficient"": -0.0947637589,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""foreign_worker=no"",
+      ""coefficient"": 0.9246035243,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""housing=own"",
+      ""coefficient"": -0.325517657,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""housing=rent"",
+      ""coefficient"": -0.379845555,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.379845555
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_20_to_below_25_percent"",
+      ""coefficient"": 0.4636842837,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.4636842837
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_25_to_below_35_percent"",
+      ""coefficient"": 0.2461032348,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_below_20_percent"",
+      ""coefficient"": 0.8178230443,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""job=manager_self_employed_or_highly_qualified_employee"",
+      ""coefficient"": 0.5540419369,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""job=skilled_employee_or_official"",
+      ""coefficient"": 0.5538300296,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.5538300296
+    },
+    {
+      ""feature"": ""job=unskilled_resident"",
+      ""coefficient"": 0.4160525244,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""number_credits=at_least_six_credits"",
+      ""coefficient"": -0.0718545217,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""number_credits=four_or_five_credits"",
+      ""coefficient"": 0.1610654323,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""number_credits=two_or_three_credits"",
+      ""coefficient"": 0.5681976567,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""other_debtors=co_applicant"",
+      ""coefficient"": 0.3252315198,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""other_debtors=guarantor"",
+      ""coefficient"": -0.9594853869,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""other_installment_plans=none"",
+      ""coefficient"": -0.4805033249,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.4805033249
+    },
+    {
+      ""feature"": ""other_installment_plans=stores"",
+      ""coefficient"": -0.0437096143,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""people_liable=zero_to_two_people_liable"",
+      ""coefficient"": -0.2104750711,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.2104750711
+    },
+    {
+      ""feature"": ""personal_status_sex=female_non_single_or_male_single"",
+      ""coefficient"": 0.2431963319,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""personal_status_sex=female_single"",
+      ""coefficient"": -0.1684095768,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""personal_status_sex=male_married_or_widowed"",
+      ""coefficient"": -0.6176617098,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.6176617098
+    },
+    {
+      ""feature"": ""present_residence=residence_1_to_below_4_years"",
+      ""coefficient"": 0.4971910547,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.4971910547
+    },
+    {
+      ""feature"": ""present_residence=residence_4_to_below_7_years"",
+      ""coefficient"": 0.4109739249,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""present_residence=residence_at_least_7_years"",
+      ""coefficient"": 0.2086160973,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""property=building_savings_agreement_or_life_insurance"",
+      ""coefficient"": -0.0058302304,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""property=car_or_other_property"",
+      ""coefficient"": 0.4571736141,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.4571736141
+    },
+    {
+      ""feature"": ""property=real_estate"",
+      ""coefficient"": 0.6071684096,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""purpose=business"",
+      ""coefficient"": -0.8212706923,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=domestic_appliances"",
+      ""coefficient"": 0.2369765041,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""purpose=furniture_or_equipment"",
+      ""coefficient"": -0.7090760876,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=new_car"",
+      ""coefficient"": -1.5925077719,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -1.5925077719
+    },
+    {
+      ""feature"": ""purpose=radio_or_television"",
+      ""coefficient"": -0.1969691109,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=repairs"",
+      ""coefficient"": 0.301597128,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""purpose=retraining"",
+      ""coefficient"": -0.47044487,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=used_car"",
+      ""coefficient"": -0.5521915592,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=vacation"",
+      ""coefficient"": -0.5440597221,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_100_to_below_500_DM"",
+      ""coefficient"": -0.3626509791,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_500_to_below_1000_DM"",
+      ""coefficient"": -1.1394261896,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -1.1394261896
+    },
+    {
+      ""feature"": ""savings=savings_at_least_1000_DM"",
+      ""coefficient"": -0.8673723767,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_below_100_DM"",
+      ""coefficient"": -0.1970421085,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""status=checking_balance_0_to_below_200_DM"",
+      ""coefficient"": -0.9789646204,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""status=checking_balance_at_least_200_DM_or_salary_account"",
+      ""coefficient"": -1.5420877385,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -1.5420877385
+    },
+    {
+      ""feature"": ""status=checking_balance_below_0_DM"",
+      ""coefficient"": -0.2317454163,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""telephone=telephone_under_customer_name"",
+      ""coefficient"": -0.3011228914,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    }
+  ],
+  ""calculation_check"": {
+    ""logit"": -5.697261380799041,
+    ""probability_bad_credit"": 0.0033439220106291564,
+    ""predicted_class"": 0
+  }
+}
+```
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",12940,787,"{
+  ""explanation_possible"": true,
+  ""reconstructed_logit"": -5.697261380799041,
+  ""reconstructed_probability"": 0.0033439220106291564,
+  ""reconstructed_class"": 0,
+  ""top_features"": [
+    {
+      ""feature"": ""purpose=new_car"",
+      ""customer_value"": ""1 (new_car)"",
+      ""coefficient"": -1.5925077719,
+      ""transformed_value"": 1.0,
+      ""contribution"": -1.5925077719,
+      ""direction"": ""decrease_bad_credit_risk"",
+      ""explanation"": ""This active category contributed -1.5925 to the bad-credit log-odds relative to the supplied purpose reference category, making it the strongest applicant-specific contribution.""
+    },
+    {
+      ""feature"": ""status=checking_balance_at_least_200_DM_or_salary_account"",
+      ""customer_value"": ""4 (checking_balance_at_least_200_DM_or_salary_account)"",
+      ""coefficient"": -1.5420877385,
+      ""transformed_value"": 1.0,
+      ""contribution"": -1.5420877385,
+      ""direction"": ""decrease_bad_credit_risk"",
+      ""explanation"": ""This active category contributed -1.5421 to the bad-credit log-odds relative to the supplied status reference category.""
+    },
+    {
+      ""feature"": ""savings=savings_500_to_below_1000_DM"",
+      ""customer_value"": ""4 (savings_500_to_below_1000_DM)"",
+      ""coefficient"": -1.1394261896,
+      ""transformed_value"": 1.0,
+      ""contribution"": -1.1394261896,
+      ""direction"": ""decrease_bad_credit_risk"",
+      ""explanation"": ""This active category contributed -1.1394 to the bad-credit log-odds relative to the supplied savings reference category.""
+    },
+    {
+      ""feature"": ""employment_duration=employed_4_to_below_7_years"",
+      ""customer_value"": ""4 (employed_4_to_below_7_years)"",
+      ""coefficient"": -0.8747210416,
+      ""transformed_value"": 1.0,
+      ""contribution"": -0.8747210416,
+      ""direction"": ""decrease_bad_credit_risk"",
+      ""explanation"": ""This active category contributed -0.8747 to the bad-credit log-odds relative to the supplied employment-duration reference category.""
+    },
+    {
+      ""feature"": ""personal_status_sex=male_married_or_widowed"",
+      ""customer_value"": ""3 (male_married_or_widowed)"",
+      ""coefficient"": -0.6176617098,
+      ""transformed_value"": 1.0,
+      ""contribution"": -0.6176617098,
+      ""direction"": ""decrease_bad_credit_risk"",
+      ""explanation"": ""This active category contributed -0.6177 to the bad-credit log-odds relative to the supplied personal-status/sex reference category.""
+    }
+  ],
+  ""model_explanation"": ""Using the supplied intercept and feature contributions, the reconstructed bad-credit logit is -5.697261380799041, corresponding to a bad-credit probability of 0.0033439220106291564 (about 0.334%). Because this is below the 0.50 classification threshold, the model predicts class 0, labeled good_credit. The five largest absolute applicant-specific contributions all lowered the modeled bad-credit log-odds: purpose=new_car (-1.5925), status=checking_balance_at_least_200_DM_or_salary_account (-1.5421), savings=savings_500_to_below_1000_DM (-1.1394), employment_duration=employed_4_to_below_7_years (-0.8747), and personal_status_sex=male_married_or_widowed (-0.6177). Other supplied features include contributions in both directions; the reported logit reflects the intercept plus all feature contributions, not only these five."",
+  ""limitations"": [
+    ""The contributions describe associations learned by this frozen logistic-regression model and are not evidence that any feature causally changes credit risk."",
+    ""One-hot categorical contributions are relative to their supplied reference categories, so they should not be interpreted as standalone effects."",
+    ""Only the five strongest absolute contributions are listed in top_features; the prediction uses all supplied model features and the intercept."",
+    ""The probability and class are model outputs, not confirmation of the applicant's future credit outcome.""
+  ]
+}","{""explanation_possible"":true,""reconstructed_logit"":-5.697261380799041,""reconstructed_probability"":0.0033439220106291564,""reconstructed_class"":0,""top_features"":[{""feature"":""purpose=new_car"",""customer_value"":""1 (new_car)"",""coefficient"":-1.5925077719,""transformed_value"":1.0,""contribution"":-1.5925077719,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -1.5925 to the bad-credit log-odds relative to the supplied purpose reference category, making it the strongest applicant-specific contribution.""},{""feature"":""status=checking_balance_at_least_200_DM_or_salary_account"",""customer_value"":""4 (checking_balance_at_least_200_DM_or_salary_account)"",""coefficient"":-1.5420877385,""transformed_value"":1.0,""contribution"":-1.5420877385,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -1.5421 to the bad-credit log-odds relative to the supplied status reference category.""},{""feature"":""savings=savings_500_to_below_1000_DM"",""customer_value"":""4 (savings_500_to_below_1000_DM)"",""coefficient"":-1.1394261896,""transformed_value"":1.0,""contribution"":-1.1394261896,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -1.1394 to the bad-credit log-odds relative to the supplied savings reference category.""},{""feature"":""employment_duration=employed_4_to_below_7_years"",""customer_value"":""4 (employed_4_to_below_7_years)"",""coefficient"":-0.8747210416,""transformed_value"":1.0,""contribution"":-0.8747210416,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -0.8747 to the bad-credit log-odds relative to the supplied employment-duration reference category.""},{""feature"":""personal_status_sex=male_married_or_widowed"",""customer_value"":""3 (male_married_or_widowed)"",""coefficient"":-0.6176617098,""transformed_value"":1.0,""contribution"":-0.6176617098,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -0.6177 to the bad-credit log-odds relative to the supplied personal-status/sex reference category.""}],""model_explanation"":""Using the supplied intercept and feature contributions, the reconstructed bad-credit logit is -5.697261380799041, corresponding to a bad-credit probability of 0.0033439220106291564 (about 0.334%). Because this is below the 0.50 classification threshold, the model predicts class 0, labeled good_credit. The five largest absolute applicant-specific contributions all lowered the modeled bad-credit log-odds: purpose=new_car (-1.5925), status=checking_balance_at_least_200_DM_or_salary_account (-1.5421), savings=savings_500_to_below_1000_DM (-1.1394), employment_duration=employed_4_to_below_7_years (-0.8747), and personal_status_sex=male_married_or_widowed (-0.6177). Other supplied features include contributions in both directions; the reported logit reflects the intercept plus all feature contributions, not only these five."",""limitations"":[""The contributions describe associations learned by this frozen logistic-regression model and are not evidence that any feature causally changes credit risk."",""One-hot categorical contributions are relative to their supplied reference categories, so they should not be interpreted as standalone effects."",""Only the five strongest absolute contributions are listed in top_features; the prediction uses all supplied model features and the intercept."",""The probability and class are model outputs, not confirmation of the applicant's future credit outcome.""]}","Using the supplied intercept and feature contributions, the reconstructed bad-credit logit is -5.697261380799041, corresponding to a bad-credit probability of 0.0033439220106291564 (about 0.334%). Because this is below the 0.50 classification threshold, the model predicts class 0, labeled good_credit. The five largest absolute applicant-specific contributions all lowered the modeled bad-credit log-odds: purpose=new_car (-1.5925), status=checking_balance_at_least_200_DM_or_salary_account (-1.5421), savings=savings_500_to_below_1000_DM (-1.1394), employment_duration=employed_4_to_below_7_years (-0.8747), and personal_status_sex=male_married_or_widowed (-0.6177). Other supplied features include contributions in both directions; the reported logit reflects the intercept plus all feature contributions, not only these five.",True,-5.697261380799041,0.0033439220106291564,0,good_credit,"[""purpose=new_car"", ""status=checking_balance_at_least_200_DM_or_salary_account"", ""savings=savings_500_to_below_1000_DM"", ""employment_duration=employed_4_to_below_7_years"", ""personal_status_sex=male_married_or_widowed""]",4722,1104,5826,,1,1,,0,,,,1.0,1.0,1.7054091472346045e-11,0.0,5,0,[]
+explanation,1,158,SGC0159,customer_prediction_only,gpt-5.6-sol,1.0,chatcmpl-EGjclfdDDqqZ5c4DanDL8ozNt6zPW,"CASE
+Applicant ID: SGC0159
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 2 (checking_balance_below_0_DM)
+duration: 48
+credit_history: 1 (critical_account_or_other_credits_elsewhere)
+purpose: 9 (retraining)
+amount: 6416
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 5 (employed_at_least_7_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 2 (female_non_single_or_male_single)
+other_debtors: 1 (none)
+present_residence: 3 (residence_4_to_below_7_years)
+property: 4 (real_estate)
+age: 59
+other_installment_plans: 3 (none)
+housing: 1 (for_free)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.9597154965
+Predicted class: 1
+Classification label: bad_credit
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",1160,121,"{""explanation_possible"":false,""reconstructed_logit"":null,""reconstructed_probability"":null,""reconstructed_class"":null,""top_features"":[],""model_explanation"":""The supplied model output reports a bad-credit probability of 0.9597154965. Because this exceeds the 0.50 classification threshold, the model assigned class 1, labeled bad_credit. However, the supplied information does not include the fitted intercept, feature coefficients, encoding or transformation details, or applicant-specific feature contributions. Therefore, it is not possible to determine which applicant features most strongly moved the model's bad-credit log-odds or to independently reconstruct the logit, probability, and class. The prediction is a model estimate, not confirmation that the applicant will have bad credit."",""limitations"":[""The fitted logistic-regression intercept and coefficients were not supplied."",""The model's feature encoding and transformation procedure was not supplied."",""Applicant-specific numerical feature contributions were not supplied."",""The reported probability and class cannot be independently reconstructed or verified from the available information."",""No feature-level directional explanation can be supported without coefficients and transformed feature values.""]}","{""explanation_possible"":false,""reconstructed_logit"":null,""reconstructed_probability"":null,""reconstructed_class"":null,""top_features"":[],""model_explanation"":""The supplied model output reports a bad-credit probability of 0.9597154965. Because this exceeds the 0.50 classification threshold, the model assigned class 1, labeled bad_credit. However, the supplied information does not include the fitted intercept, feature coefficients, encoding or transformation details, or applicant-specific feature contributions. Therefore, it is not possible to determine which applicant features most strongly moved the model's bad-credit log-odds or to independently reconstruct the logit, probability, and class. The prediction is a model estimate, not confirmation that the applicant will have bad credit."",""limitations"":[""The fitted logistic-regression intercept and coefficients were not supplied."",""The model's feature encoding and transformation procedure was not supplied."",""Applicant-specific numerical feature contributions were not supplied."",""The reported probability and class cannot be independently reconstructed or verified from the available information."",""No feature-level directional explanation can be supported without coefficients and transformed feature values.""]}","The supplied model output reports a bad-credit probability of 0.9597154965. Because this exceeds the 0.50 classification threshold, the model assigned class 1, labeled bad_credit. However, the supplied information does not include the fitted intercept, feature coefficients, encoding or transformation details, or applicant-specific feature contributions. Therefore, it is not possible to determine which applicant features most strongly moved the model's bad-credit log-odds or to independently reconstruct the logit, probability, and class. The prediction is a model estimate, not confirmation that the applicant will have bad credit.",False,3.1706700155593546,0.9597154964729071,1,bad_credit,"[""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""duration_standardized"", ""property=real_estate"", ""job=skilled_employee_or_official""]",1038,313,1351,,1,1,1.0,0,,,,,,,0.0,0,0,[]
+explanation,1,158,SGC0159,textual_description,gpt-5.6-sol,1.0,chatcmpl-EGjcqV209HyQHCJUrEcVC3JnUmkDH,"CASE
+Applicant ID: SGC0159
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 2 (checking_balance_below_0_DM)
+duration: 48
+credit_history: 1 (critical_account_or_other_credits_elsewhere)
+purpose: 9 (retraining)
+amount: 6416
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 5 (employed_at_least_7_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 2 (female_non_single_or_male_single)
+other_debtors: 1 (none)
+present_residence: 3 (residence_4_to_below_7_years)
+property: 4 (real_estate)
+age: 59
+other_installment_plans: 3 (none)
+housing: 1 (for_free)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.9597154965
+Predicted class: 1
+Classification label: bad_credit
+
+MODEL AND FEATURE DESCRIPTION
+The prediction was produced by logistic regression. Logistic regression forms
+a linear combination of transformed input features and learned coefficients,
+then applies the sigmoid function to obtain the positive-class probability.
+Positive applicant-specific model contributions increase the estimated
+bad-credit risk and negative contributions decrease it.
+
+Feature definitions:
+- status: Status of the debtor's checking account with the bank.
+- duration: Credit duration in months.
+- credit_history: History of compliance with previous or concurrent credit contracts.
+- purpose: Purpose for which the credit is needed.
+- amount: Credit amount in DM after an undocumented monotonic transformation; the original amount cannot be recovered.
+- savings: Debtor's savings-account category.
+- employment_duration: Duration of employment with the current employer.
+- installment_rate: Installments as a percentage of disposable income.
+- personal_status_sex: Combined personal-status and sex category from the codebook.
+- other_debtors: Whether another debtor or guarantor supports the credit.
+- present_residence: Length of time at the present residence.
+- property: The debtor's most valuable property category.
+- age: Age in years.
+- other_installment_plans: Installment plans with providers other than this bank.
+- housing: Housing arrangement.
+- number_credits: Number of current or previous credits at this bank.
+- job: Employment or job qualification category.
+- people_liable: Number of people financially dependent on the debtor.
+- telephone: Whether a landline is registered in the customer's name.
+- foreign_worker: Whether the debtor is a foreign worker.
+
+The fitted intercept, fitted coefficients, transformed applicant values, and
+applicant-specific contributions are not supplied in this condition.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",2999,369,"{""explanation_possible"":false,""reconstructed_logit"":null,""reconstructed_probability"":null,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The reported bad-credit probability is 0.9597154965. Because this exceeds the 0.50 classification threshold, the model assigns class 1 (bad_credit). This is a model estimate, not confirmation that the applicant will have a bad credit outcome. A feature-level explanation cannot be supported: the fitted intercept, coefficients, transformed applicant values, and applicant-specific contributions were not supplied, so none of the applicant's features can be identified as increasing or decreasing the model's bad-credit log-odds."",""limitations"":[""The fitted intercept and feature coefficients are unavailable, preventing reconstruction of the model's linear score from its inputs."",""The exact transformed applicant values are unavailable, including the undocumented monotonic transformation applied to amount."",""Applicant-specific feature contributions cannot be calculated or ranked, so no top features can be reported."",""The reported probability cannot be independently verified from the frozen model parameters; only the threshold-based class can be reconstructed from the supplied probability.""]}","{""explanation_possible"":false,""reconstructed_logit"":null,""reconstructed_probability"":null,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The reported bad-credit probability is 0.9597154965. Because this exceeds the 0.50 classification threshold, the model assigns class 1 (bad_credit). This is a model estimate, not confirmation that the applicant will have a bad credit outcome. A feature-level explanation cannot be supported: the fitted intercept, coefficients, transformed applicant values, and applicant-specific contributions were not supplied, so none of the applicant's features can be identified as increasing or decreasing the model's bad-credit log-odds."",""limitations"":[""The fitted intercept and feature coefficients are unavailable, preventing reconstruction of the model's linear score from its inputs."",""The exact transformed applicant values are unavailable, including the undocumented monotonic transformation applied to amount."",""Applicant-specific feature contributions cannot be calculated or ranked, so no top features can be reported."",""The reported probability cannot be independently verified from the frozen model parameters; only the threshold-based class can be reconstructed from the supplied probability.""]}","The reported bad-credit probability is 0.9597154965. Because this exceeds the 0.50 classification threshold, the model assigns class 1 (bad_credit). This is a model estimate, not confirmation that the applicant will have a bad credit outcome. A feature-level explanation cannot be supported: the fitted intercept, coefficients, transformed applicant values, and applicant-specific contributions were not supplied, so none of the applicant's features can be identified as increasing or decreasing the model's bad-credit log-odds.",False,3.1706700155593546,0.9597154964729071,1,bad_credit,"[""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""duration_standardized"", ""property=real_estate"", ""job=skilled_employee_or_official""]",1377,1013,2390,,1,1,1.0,0,,,,,,,0.0,0,0,[]
+explanation,1,158,SGC0159,training_code_only,gpt-5.6-sol,1.0,chatcmpl-EGjd8JdShQUoawR6aSATLrrJBlOhC,"CASE
+Applicant ID: SGC0159
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 2 (checking_balance_below_0_DM)
+duration: 48
+credit_history: 1 (critical_account_or_other_credits_elsewhere)
+purpose: 9 (retraining)
+amount: 6416
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 5 (employed_at_least_7_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 2 (female_non_single_or_male_single)
+other_debtors: 1 (none)
+present_residence: 3 (residence_4_to_below_7_years)
+property: 4 (real_estate)
+age: 59
+other_installment_plans: 3 (none)
+housing: 1 (for_free)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.9597154965
+Predicted class: 1
+Classification label: bad_credit
+
+TRAINING CODE
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+numeric_features = ['duration', 'amount', 'age']
+categorical_features = [
+    ""status"", ""credit_history"", ""purpose"", ""savings"",
+    ""employment_duration"", ""installment_rate"", ""personal_status_sex"",
+    ""other_debtors"", ""present_residence"", ""property"",
+    ""other_installment_plans"", ""housing"", ""number_credits"", ""job"",
+    ""people_liable"", ""telephone"", ""foreign_worker"",
+]
+
+# y_bad_credit was recoded so 1=bad credit and 0=good credit.
+preprocessor = ColumnTransformer([
+    (""numeric"", StandardScaler(), numeric_features),
+    (""categorical"", OneHotEncoder(
+        drop=""first"", handle_unknown=""ignore"", sparse_output=False
+    ), categorical_features),
+])
+pipeline = Pipeline([
+    (""preprocessor"", preprocessor),
+    (""logistic_regression"", LogisticRegression(
+        max_iter=2000, random_state=42
+    )),
+])
+pipeline.fit(X_train, y_train)
+probability_bad_credit = pipeline.predict_proba(customer)[0, 1]
+predicted_class = int(probability_bad_credit >= 0.5)
+```
+
+This condition shows how the model was trained, but it does not contain the
+learned intercept, learned coefficients, or fitted scaling statistics.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",2501,236,"{""explanation_possible"":false,""reconstructed_logit"":3.170671,""reconstructed_probability"":0.9597154965,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The supplied probability corresponds to a bad-credit logit of approximately 3.170671. Because the bad-credit probability of 0.9597154965 exceeds the 0.50 classification threshold, the model assigned class 1 (bad_credit). However, the supplied information does not support identifying which applicant features most strongly moved the prediction or their directions. Feature-level effects cannot be reconstructed without the fitted coefficients, intercept, numeric scaling statistics, and fitted one-hot category ordering. This is a model prediction, not confirmation that the applicant will have bad credit."",""limitations"":[""The learned logistic-regression coefficients and intercept are not supplied, so applicant-specific feature contributions cannot be calculated or ranked."",""The fitted StandardScaler means and scales for duration, amount, and age are not supplied, so their transformed values are unknown."",""The fitted OneHotEncoder category ordering is not supplied, so the generated categorical feature names, dropped reference categories, and encoded applicant values cannot be determined exactly."",""The logit is reconstructed from the rounded supplied probability and may therefore differ slightly from the model's full-precision decision score.""]}","{""explanation_possible"":false,""reconstructed_logit"":3.170671,""reconstructed_probability"":0.9597154965,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The supplied probability corresponds to a bad-credit logit of approximately 3.170671. Because the bad-credit probability of 0.9597154965 exceeds the 0.50 classification threshold, the model assigned class 1 (bad_credit). However, the supplied information does not support identifying which applicant features most strongly moved the prediction or their directions. Feature-level effects cannot be reconstructed without the fitted coefficients, intercept, numeric scaling statistics, and fitted one-hot category ordering. This is a model prediction, not confirmation that the applicant will have bad credit."",""limitations"":[""The learned logistic-regression coefficients and intercept are not supplied, so applicant-specific feature contributions cannot be calculated or ranked."",""The fitted StandardScaler means and scales for duration, amount, and age are not supplied, so their transformed values are unknown."",""The fitted OneHotEncoder category ordering is not supplied, so the generated categorical feature names, dropped reference categories, and encoded applicant values cannot be determined exactly."",""The logit is reconstructed from the rounded supplied probability and may therefore differ slightly from the model's full-precision decision score.""]}","The supplied probability corresponds to a bad-credit logit of approximately 3.170671. Because the bad-credit probability of 0.9597154965 exceeds the 0.50 classification threshold, the model assigned class 1 (bad_credit). However, the supplied information does not support identifying which applicant features most strongly moved the prediction or their directions. Feature-level effects cannot be reconstructed without the fitted coefficients, intercept, numeric scaling statistics, and fitted one-hot category ordering. This is a model prediction, not confirmation that the applicant will have bad credit.",False,3.1706700155593546,0.9597154964729071,1,bad_credit,"[""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""duration_standardized"", ""property=real_estate"", ""job=skilled_employee_or_official""]",1344,556,1900,,1,1,1.0,0,,,,,,,0.0,0,0,[]
+explanation,1,158,SGC0159,learned_parameters,gpt-5.6-sol,1.0,chatcmpl-EGjdHiZbiQu64bfQacqQV5Jauemwo,"CASE
+Applicant ID: SGC0159
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 2 (checking_balance_below_0_DM)
+duration: 48
+credit_history: 1 (critical_account_or_other_credits_elsewhere)
+purpose: 9 (retraining)
+amount: 6416
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 5 (employed_at_least_7_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 2 (female_non_single_or_male_single)
+other_debtors: 1 (none)
+present_residence: 3 (residence_4_to_below_7_years)
+property: 4 (real_estate)
+age: 59
+other_installment_plans: 3 (none)
+housing: 1 (for_free)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.9597154965
+Predicted class: 1
+Classification label: bad_credit
+
+LEARNED MODEL PARAMETERS
+Model type: logistic regression
+Positive class: 1 = bad credit risk
+Equation: z = intercept + sum(coefficient_j * transformed_value_j)
+Probability: sigmoid(z)
+Numeric preprocessing: (raw value - training mean) / training standard deviation
+Categorical preprocessing: one-hot encoding with the first category as reference.
+Intercept: -0.2894631489
+
+FITTED NUMERIC SCALING
+| feature | training_mean | training_standard_deviation |
+|---|---:|---:|
+| duration | 20.7614285714 | 12.0471193102 |
+| amount | 3212.2128571429 | 2797.1376735320 |
+| age | 35.7928571429 | 11.0970372034 |
+
+ONE-HOT REFERENCE CATEGORIES
+- status: 1 (no_checking_account)
+- credit_history: 0 (delay_in_paying_in_the_past)
+- purpose: 0 (others)
+- savings: 1 (unknown_or_no_savings_account)
+- employment_duration: 1 (unemployed)
+- installment_rate: 1 (installment_rate_at_least_35_percent)
+- personal_status_sex: 1 (male_divorced_or_separated)
+- other_debtors: 1 (none)
+- present_residence: 1 (residence_below_1_year)
+- property: 1 (unknown_or_no_property)
+- other_installment_plans: 1 (bank)
+- housing: 1 (for_free)
+- number_credits: 1 (one_credit)
+- job: 1 (unemployed_or_unskilled_non_resident)
+- people_liable: 1 (three_or_more_people_liable)
+- telephone: 1 (no_telephone)
+- foreign_worker: 1 (yes)
+
+| transformed_feature | fitted_coefficient | transformed_customer_value |
+|---|---:|---:|
+| age_standardized | -0.0081267242 | 2.0912917954 |
+| amount_standardized | 0.4061854968 | 1.1453805700 |
+| credit_history=all_credits_at_this_bank_paid_back_duly | -1.3303229846 | 0.0000000000 |
+| credit_history=critical_account_or_other_credits_elsewhere | 0.4888820981 | 1.0000000000 |
+| credit_history=existing_credits_paid_back_duly_until_now | -0.8277684084 | 0.0000000000 |
+| credit_history=no_credits_taken_or_all_paid_back_duly | -0.0581539415 | 0.0000000000 |
+| duration_standardized | 0.2873191622 | 2.2610028777 |
+| employment_duration=employed_1_to_below_4_years | -0.1455202068 | 0.0000000000 |
+| employment_duration=employed_4_to_below_7_years | -0.8747210416 | 0.0000000000 |
+| employment_duration=employed_at_least_7_years | -0.2910465925 | 1.0000000000 |
+| employment_duration=employed_below_1_year | -0.0947637589 | 0.0000000000 |
+| foreign_worker=no | 0.9246035243 | 1.0000000000 |
+| housing=own | -0.3255176570 | 0.0000000000 |
+| housing=rent | -0.3798455550 | 0.0000000000 |
+| installment_rate=installment_rate_20_to_below_25_percent | 0.4636842837 | 0.0000000000 |
+| installment_rate=installment_rate_25_to_below_35_percent | 0.2461032348 | 0.0000000000 |
+| installment_rate=installment_rate_below_20_percent | 0.8178230443 | 1.0000000000 |
+| job=manager_self_employed_or_highly_qualified_employee | 0.5540419369 | 0.0000000000 |
+| job=skilled_employee_or_official | 0.5538300296 | 1.0000000000 |
+| job=unskilled_resident | 0.4160525244 | 0.0000000000 |
+| number_credits=at_least_six_credits | -0.0718545217 | 0.0000000000 |
+| number_credits=four_or_five_credits | 0.1610654323 | 0.0000000000 |
+| number_credits=two_or_three_credits | 0.5681976567 | 0.0000000000 |
+| other_debtors=co_applicant | 0.3252315198 | 0.0000000000 |
+| other_debtors=guarantor | -0.9594853869 | 0.0000000000 |
+| other_installment_plans=none | -0.4805033249 | 1.0000000000 |
+| other_installment_plans=stores | -0.0437096143 | 0.0000000000 |
+| people_liable=zero_to_two_people_liable | -0.2104750711 | 1.0000000000 |
+| personal_status_sex=female_non_single_or_male_single | 0.2431963319 | 1.0000000000 |
+| personal_status_sex=female_single | -0.1684095768 | 0.0000000000 |
+| personal_status_sex=male_married_or_widowed | -0.6176617098 | 0.0000000000 |
+| present_residence=residence_1_to_below_4_years | 0.4971910547 | 0.0000000000 |
+| present_residence=residence_4_to_below_7_years | 0.4109739249 | 1.0000000000 |
+| present_residence=residence_at_least_7_years | 0.2086160973 | 0.0000000000 |
+| property=building_savings_agreement_or_life_insurance | -0.0058302304 | 0.0000000000 |
+| property=car_or_other_property | 0.4571736141 | 0.0000000000 |
+| property=real_estate | 0.6071684096 | 1.0000000000 |
+| purpose=business | -0.8212706923 | 0.0000000000 |
+| purpose=domestic_appliances | 0.2369765041 | 0.0000000000 |
+| purpose=furniture_or_equipment | -0.7090760876 | 0.0000000000 |
+| purpose=new_car | -1.5925077719 | 0.0000000000 |
+| purpose=radio_or_television | -0.1969691109 | 0.0000000000 |
+| purpose=repairs | 0.3015971280 | 0.0000000000 |
+| purpose=retraining | -0.4704448700 | 1.0000000000 |
+| purpose=used_car | -0.5521915592 | 0.0000000000 |
+| purpose=vacation | -0.5440597221 | 0.0000000000 |
+| savings=savings_100_to_below_500_DM | -0.3626509791 | 0.0000000000 |
+| savings=savings_500_to_below_1000_DM | -1.1394261896 | 0.0000000000 |
+| savings=savings_at_least_1000_DM | -0.8673723767 | 0.0000000000 |
+| savings=savings_below_100_DM | -0.1970421085 | 0.0000000000 |
+| status=checking_balance_0_to_below_200_DM | -0.9789646204 | 0.0000000000 |
+| status=checking_balance_at_least_200_DM_or_salary_account | -1.5420877385 | 0.0000000000 |
+| status=checking_balance_below_0_DM | -0.2317454163 | 1.0000000000 |
+| telephone=telephone_under_customer_name | -0.3011228914 | 0.0000000000 |
+
+Applicant-specific contributions are not precomputed in this condition.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",6410,665,"{""explanation_possible"":true,""reconstructed_logit"":3.1706700158,""reconstructed_probability"":0.9597154965,""reconstructed_class"":1,""top_features"":[{""feature"":""foreign_worker=no"",""customer_value"":""2 (no)"",""coefficient"":0.9246035243,""transformed_value"":1.0,""contribution"":0.9246035243,""direction"":""increase_bad_credit_risk"",""explanation"":""This active one-hot feature adds 0.9246 to the model's bad-credit log-odds relative to the reference category foreign_worker=yes.""},{""feature"":""installment_rate=installment_rate_below_20_percent"",""customer_value"":""4 (installment_rate_below_20_percent)"",""coefficient"":0.8178230443,""transformed_value"":1.0,""contribution"":0.8178230443,""direction"":""increase_bad_credit_risk"",""explanation"":""This active one-hot feature adds 0.8178 to the model's bad-credit log-odds relative to the reference category installment_rate_at_least_35_percent.""},{""feature"":""duration_standardized"",""customer_value"":""48"",""coefficient"":0.2873191622,""transformed_value"":2.2610028777,""contribution"":0.6496294526,""direction"":""increase_bad_credit_risk"",""explanation"":""The standardized duration value contributes about 0.6496 to the model's bad-credit log-odds.""},{""feature"":""property=real_estate"",""customer_value"":""4 (real_estate)"",""coefficient"":0.6071684096,""transformed_value"":1.0,""contribution"":0.6071684096,""direction"":""increase_bad_credit_risk"",""explanation"":""This active one-hot feature adds 0.6072 to the model's bad-credit log-odds relative to the reference category property=unknown_or_no_property.""},{""feature"":""job=skilled_employee_or_official"",""customer_value"":""3 (skilled_employee_or_official)"",""coefficient"":0.5538300296,""transformed_value"":1.0,""contribution"":0.5538300296,""direction"":""increase_bad_credit_risk"",""explanation"":""This active one-hot feature adds 0.5538 to the model's bad-credit log-odds relative to the reference category job=unemployed_or_unskilled_non_resident.""}],""model_explanation"":""Using the supplied intercept, coefficients, and transformed applicant values, the reconstructed logit is 3.1706700158 and the corresponding bad-credit probability is 0.9597154965. This exceeds the 0.50 threshold, so the reconstructed class is 1 (bad credit risk). The strongest applicant-specific increases in bad-credit log-odds are foreign_worker=no (+0.9246), installment_rate=installment_rate_below_20_percent (+0.8178), duration_standardized (+0.6496), property=real_estate (+0.6072), and job=skilled_employee_or_official (+0.5538). Countervailing contributions include other_installment_plans=none (-0.4805), purpose=retraining (-0.4704), employment_duration=employed_at_least_7_years (-0.2910), status=checking_balance_below_0_DM (-0.2317), and people_liable=zero_to_two_people_liable (-0.2105). Overall, the positive contributions outweighed the negative contributions and the intercept, producing the class-1 prediction. These are fitted model associations, not causal effects, and the prediction is not confirmation of a future outcome."",""limitations"":[""Only the five largest absolute feature contributions are included in top_features; the model also used the remaining supplied features and the intercept."",""Contributions were reconstructed from the displayed coefficients and transformed values, which are supplied at finite decimal precision and may therefore be rounded relative to the model's internal calculations."",""One-hot categorical contributions are relative to the stated reference categories, while numeric contributions depend on the supplied training means and standard deviations."",""The model output describes an estimated association and classification, not a certain future credit outcome or a causal explanation.""]}","{""explanation_possible"":true,""reconstructed_logit"":3.1706700158,""reconstructed_probability"":0.9597154965,""reconstructed_class"":1,""top_features"":[{""feature"":""foreign_worker=no"",""customer_value"":""2 (no)"",""coefficient"":0.9246035243,""transformed_value"":1.0,""contribution"":0.9246035243,""direction"":""increase_bad_credit_risk"",""explanation"":""This active one-hot feature adds 0.9246 to the model's bad-credit log-odds relative to the reference category foreign_worker=yes.""},{""feature"":""installment_rate=installment_rate_below_20_percent"",""customer_value"":""4 (installment_rate_below_20_percent)"",""coefficient"":0.8178230443,""transformed_value"":1.0,""contribution"":0.8178230443,""direction"":""increase_bad_credit_risk"",""explanation"":""This active one-hot feature adds 0.8178 to the model's bad-credit log-odds relative to the reference category installment_rate_at_least_35_percent.""},{""feature"":""duration_standardized"",""customer_value"":""48"",""coefficient"":0.2873191622,""transformed_value"":2.2610028777,""contribution"":0.6496294526,""direction"":""increase_bad_credit_risk"",""explanation"":""The standardized duration value contributes about 0.6496 to the model's bad-credit log-odds.""},{""feature"":""property=real_estate"",""customer_value"":""4 (real_estate)"",""coefficient"":0.6071684096,""transformed_value"":1.0,""contribution"":0.6071684096,""direction"":""increase_bad_credit_risk"",""explanation"":""This active one-hot feature adds 0.6072 to the model's bad-credit log-odds relative to the reference category property=unknown_or_no_property.""},{""feature"":""job=skilled_employee_or_official"",""customer_value"":""3 (skilled_employee_or_official)"",""coefficient"":0.5538300296,""transformed_value"":1.0,""contribution"":0.5538300296,""direction"":""increase_bad_credit_risk"",""explanation"":""This active one-hot feature adds 0.5538 to the model's bad-credit log-odds relative to the reference category job=unemployed_or_unskilled_non_resident.""}],""model_explanation"":""Using the supplied intercept, coefficients, and transformed applicant values, the reconstructed logit is 3.1706700158 and the corresponding bad-credit probability is 0.9597154965. This exceeds the 0.50 threshold, so the reconstructed class is 1 (bad credit risk). The strongest applicant-specific increases in bad-credit log-odds are foreign_worker=no (+0.9246), installment_rate=installment_rate_below_20_percent (+0.8178), duration_standardized (+0.6496), property=real_estate (+0.6072), and job=skilled_employee_or_official (+0.5538). Countervailing contributions include other_installment_plans=none (-0.4805), purpose=retraining (-0.4704), employment_duration=employed_at_least_7_years (-0.2910), status=checking_balance_below_0_DM (-0.2317), and people_liable=zero_to_two_people_liable (-0.2105). Overall, the positive contributions outweighed the negative contributions and the intercept, producing the class-1 prediction. These are fitted model associations, not causal effects, and the prediction is not confirmation of a future outcome."",""limitations"":[""Only the five largest absolute feature contributions are included in top_features; the model also used the remaining supplied features and the intercept."",""Contributions were reconstructed from the displayed coefficients and transformed values, which are supplied at finite decimal precision and may therefore be rounded relative to the model's internal calculations."",""One-hot categorical contributions are relative to the stated reference categories, while numeric contributions depend on the supplied training means and standard deviations."",""The model output describes an estimated association and classification, not a certain future credit outcome or a causal explanation.""]}","Using the supplied intercept, coefficients, and transformed applicant values, the reconstructed logit is 3.1706700158 and the corresponding bad-credit probability is 0.9597154965. This exceeds the 0.50 threshold, so the reconstructed class is 1 (bad credit risk). The strongest applicant-specific increases in bad-credit log-odds are foreign_worker=no (+0.9246), installment_rate=installment_rate_below_20_percent (+0.8178), duration_standardized (+0.6496), property=real_estate (+0.6072), and job=skilled_employee_or_official (+0.5538). Countervailing contributions include other_installment_plans=none (-0.4805), purpose=retraining (-0.4704), employment_duration=employed_at_least_7_years (-0.2910), status=checking_balance_below_0_DM (-0.2317), and people_liable=zero_to_two_people_liable (-0.2105). Overall, the positive contributions outweighed the negative contributions and the intercept, producing the class-1 prediction. These are fitted model associations, not causal effects, and the prediction is not confirmation of a future outcome.",True,3.1706700155593546,0.9597154964729071,1,bad_credit,"[""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""duration_standardized"", ""property=real_estate"", ""job=skilled_employee_or_official""]",2900,2303,5203,,1,1,,0,,,,1.0,1.0,3.33048921774548e-11,0.0,5,0,[]
+explanation,1,158,SGC0159,full_structured_package,gpt-5.6-sol,1.0,chatcmpl-EGjdpVawqfms01bXCTZTOUGQLYQsu,"CASE
+Applicant ID: SGC0159
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 2 (checking_balance_below_0_DM)
+duration: 48
+credit_history: 1 (critical_account_or_other_credits_elsewhere)
+purpose: 9 (retraining)
+amount: 6416
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 5 (employed_at_least_7_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 2 (female_non_single_or_male_single)
+other_debtors: 1 (none)
+present_residence: 3 (residence_4_to_below_7_years)
+property: 4 (real_estate)
+age: 59
+other_installment_plans: 3 (none)
+housing: 1 (for_free)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.9597154965
+Predicted class: 1
+Classification label: bad_credit
+
+COMPLETE STRUCTURED EVIDENCE PACKAGE
+```json
+{
+  ""target"": {
+    ""positive_class"": ""bad_credit"",
+    ""positive_class_value"": 1,
+    ""negative_class"": ""good_credit"",
+    ""negative_class_value"": 0,
+    ""decision_threshold"": 0.5
+  },
+  ""formula"": {
+    ""logit"": ""intercept + sum(log_odds_contribution)"",
+    ""probability"": ""sigmoid(logit)"",
+    ""feature_contribution"": ""coefficient * transformed_customer_value""
+  },
+  ""intercept"": -0.28946314891139896,
+  ""numeric_scaling"": {
+    ""duration"": {
+      ""training_mean"": 20.76142857142857,
+      ""training_standard_deviation"": 12.047119310169938
+    },
+    ""amount"": {
+      ""training_mean"": 3212.212857142857,
+      ""training_standard_deviation"": 2797.137673531969
+    },
+    ""age"": {
+      ""training_mean"": 35.792857142857144,
+      ""training_standard_deviation"": 11.097037203410537
+    }
+  },
+  ""one_hot_reference_categories"": {
+    ""status"": ""1 (no_checking_account)"",
+    ""credit_history"": ""0 (delay_in_paying_in_the_past)"",
+    ""purpose"": ""0 (others)"",
+    ""savings"": ""1 (unknown_or_no_savings_account)"",
+    ""employment_duration"": ""1 (unemployed)"",
+    ""installment_rate"": ""1 (installment_rate_at_least_35_percent)"",
+    ""personal_status_sex"": ""1 (male_divorced_or_separated)"",
+    ""other_debtors"": ""1 (none)"",
+    ""present_residence"": ""1 (residence_below_1_year)"",
+    ""property"": ""1 (unknown_or_no_property)"",
+    ""other_installment_plans"": ""1 (bank)"",
+    ""housing"": ""1 (for_free)"",
+    ""number_credits"": ""1 (one_credit)"",
+    ""job"": ""1 (unemployed_or_unskilled_non_resident)"",
+    ""people_liable"": ""1 (three_or_more_people_liable)"",
+    ""telephone"": ""1 (no_telephone)"",
+    ""foreign_worker"": ""1 (yes)""
+  },
+  ""features"": [
+    {
+      ""feature"": ""age_standardized"",
+      ""coefficient"": -0.0081267242,
+      ""transformed_customer_value"": 2.0912917954,
+      ""log_odds_contribution"": -0.0169953517
+    },
+    {
+      ""feature"": ""amount_standardized"",
+      ""coefficient"": 0.4061854968,
+      ""transformed_customer_value"": 1.14538057,
+      ""log_odds_contribution"": 0.4652369758
+    },
+    {
+      ""feature"": ""credit_history=all_credits_at_this_bank_paid_back_duly"",
+      ""coefficient"": -1.3303229846,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""credit_history=critical_account_or_other_credits_elsewhere"",
+      ""coefficient"": 0.4888820981,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.4888820981
+    },
+    {
+      ""feature"": ""credit_history=existing_credits_paid_back_duly_until_now"",
+      ""coefficient"": -0.8277684084,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""credit_history=no_credits_taken_or_all_paid_back_duly"",
+      ""coefficient"": -0.0581539415,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""duration_standardized"",
+      ""coefficient"": 0.2873191622,
+      ""transformed_customer_value"": 2.2610028777,
+      ""log_odds_contribution"": 0.6496294525
+    },
+    {
+      ""feature"": ""employment_duration=employed_1_to_below_4_years"",
+      ""coefficient"": -0.1455202068,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""employment_duration=employed_4_to_below_7_years"",
+      ""coefficient"": -0.8747210416,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""employment_duration=employed_at_least_7_years"",
+      ""coefficient"": -0.2910465925,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.2910465925
+    },
+    {
+      ""feature"": ""employment_duration=employed_below_1_year"",
+      ""coefficient"": -0.0947637589,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""foreign_worker=no"",
+      ""coefficient"": 0.9246035243,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.9246035243
+    },
+    {
+      ""feature"": ""housing=own"",
+      ""coefficient"": -0.325517657,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""housing=rent"",
+      ""coefficient"": -0.379845555,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_20_to_below_25_percent"",
+      ""coefficient"": 0.4636842837,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_25_to_below_35_percent"",
+      ""coefficient"": 0.2461032348,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_below_20_percent"",
+      ""coefficient"": 0.8178230443,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.8178230443
+    },
+    {
+      ""feature"": ""job=manager_self_employed_or_highly_qualified_employee"",
+      ""coefficient"": 0.5540419369,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""job=skilled_employee_or_official"",
+      ""coefficient"": 0.5538300296,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.5538300296
+    },
+    {
+      ""feature"": ""job=unskilled_resident"",
+      ""coefficient"": 0.4160525244,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""number_credits=at_least_six_credits"",
+      ""coefficient"": -0.0718545217,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""number_credits=four_or_five_credits"",
+      ""coefficient"": 0.1610654323,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""number_credits=two_or_three_credits"",
+      ""coefficient"": 0.5681976567,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""other_debtors=co_applicant"",
+      ""coefficient"": 0.3252315198,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""other_debtors=guarantor"",
+      ""coefficient"": -0.9594853869,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""other_installment_plans=none"",
+      ""coefficient"": -0.4805033249,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.4805033249
+    },
+    {
+      ""feature"": ""other_installment_plans=stores"",
+      ""coefficient"": -0.0437096143,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""people_liable=zero_to_two_people_liable"",
+      ""coefficient"": -0.2104750711,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.2104750711
+    },
+    {
+      ""feature"": ""personal_status_sex=female_non_single_or_male_single"",
+      ""coefficient"": 0.2431963319,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.2431963319
+    },
+    {
+      ""feature"": ""personal_status_sex=female_single"",
+      ""coefficient"": -0.1684095768,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""personal_status_sex=male_married_or_widowed"",
+      ""coefficient"": -0.6176617098,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""present_residence=residence_1_to_below_4_years"",
+      ""coefficient"": 0.4971910547,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""present_residence=residence_4_to_below_7_years"",
+      ""coefficient"": 0.4109739249,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.4109739249
+    },
+    {
+      ""feature"": ""present_residence=residence_at_least_7_years"",
+      ""coefficient"": 0.2086160973,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""property=building_savings_agreement_or_life_insurance"",
+      ""coefficient"": -0.0058302304,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""property=car_or_other_property"",
+      ""coefficient"": 0.4571736141,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""property=real_estate"",
+      ""coefficient"": 0.6071684096,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.6071684096
+    },
+    {
+      ""feature"": ""purpose=business"",
+      ""coefficient"": -0.8212706923,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=domestic_appliances"",
+      ""coefficient"": 0.2369765041,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""purpose=furniture_or_equipment"",
+      ""coefficient"": -0.7090760876,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=new_car"",
+      ""coefficient"": -1.5925077719,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=radio_or_television"",
+      ""coefficient"": -0.1969691109,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=repairs"",
+      ""coefficient"": 0.301597128,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""purpose=retraining"",
+      ""coefficient"": -0.47044487,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.47044487
+    },
+    {
+      ""feature"": ""purpose=used_car"",
+      ""coefficient"": -0.5521915592,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=vacation"",
+      ""coefficient"": -0.5440597221,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_100_to_below_500_DM"",
+      ""coefficient"": -0.3626509791,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_500_to_below_1000_DM"",
+      ""coefficient"": -1.1394261896,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_at_least_1000_DM"",
+      ""coefficient"": -0.8673723767,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_below_100_DM"",
+      ""coefficient"": -0.1970421085,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""status=checking_balance_0_to_below_200_DM"",
+      ""coefficient"": -0.9789646204,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""status=checking_balance_at_least_200_DM_or_salary_account"",
+      ""coefficient"": -1.5420877385,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""status=checking_balance_below_0_DM"",
+      ""coefficient"": -0.2317454163,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.2317454163
+    },
+    {
+      ""feature"": ""telephone=telephone_under_customer_name"",
+      ""coefficient"": -0.3011228914,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    }
+  ],
+  ""calculation_check"": {
+    ""logit"": 3.1706700155593546,
+    ""probability_bad_credit"": 0.9597154964729071,
+    ""predicted_class"": 1
+  }
+}
+```
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",12902,787,"{
+  ""explanation_possible"": true,
+  ""reconstructed_logit"": 3.1706700155593546,
+  ""reconstructed_probability"": 0.9597154964729071,
+  ""reconstructed_class"": 1,
+  ""top_features"": [
+    {
+      ""feature"": ""foreign_worker=no"",
+      ""customer_value"": ""no"",
+      ""coefficient"": 0.9246035243,
+      ""transformed_value"": 1.0,
+      ""contribution"": 0.9246035243,
+      ""direction"": ""increase_bad_credit_risk"",
+      ""explanation"": ""This active indicator added 0.9246 to the model's bad-credit log-odds.""
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_below_20_percent"",
+      ""customer_value"": ""installment_rate_below_20_percent"",
+      ""coefficient"": 0.8178230443,
+      ""transformed_value"": 1.0,
+      ""contribution"": 0.8178230443,
+      ""direction"": ""increase_bad_credit_risk"",
+      ""explanation"": ""This active category added 0.8178 to the model's bad-credit log-odds.""
+    },
+    {
+      ""feature"": ""duration_standardized"",
+      ""customer_value"": ""48"",
+      ""coefficient"": 0.2873191622,
+      ""transformed_value"": 2.2610028777,
+      ""contribution"": 0.6496294525,
+      ""direction"": ""increase_bad_credit_risk"",
+      ""explanation"": ""The standardized duration value of 2.2610, multiplied by its positive coefficient, added 0.6496 to the bad-credit log-odds.""
+    },
+    {
+      ""feature"": ""property=real_estate"",
+      ""customer_value"": ""real_estate"",
+      ""coefficient"": 0.6071684096,
+      ""transformed_value"": 1.0,
+      ""contribution"": 0.6071684096,
+      ""direction"": ""increase_bad_credit_risk"",
+      ""explanation"": ""This active category added 0.6072 to the model's bad-credit log-odds.""
+    },
+    {
+      ""feature"": ""job=skilled_employee_or_official"",
+      ""customer_value"": ""skilled_employee_or_official"",
+      ""coefficient"": 0.5538300296,
+      ""transformed_value"": 1.0,
+      ""contribution"": 0.5538300296,
+      ""direction"": ""increase_bad_credit_risk"",
+      ""explanation"": ""This active category added 0.5538 to the model's bad-credit log-odds.""
+    }
+  ],
+  ""model_explanation"": ""Starting from the intercept of -0.2895 and summing all supplied applicant-specific contributions gives a logit of 3.1706700156. The strongest contributions by absolute magnitude were foreign_worker=no (+0.9246), installment_rate=installment_rate_below_20_percent (+0.8178), duration_standardized (+0.6496), property=real_estate (+0.6072), and job=skilled_employee_or_official (+0.5538); each increased the model's bad-credit log-odds. Other supplied features included both increasing and decreasing contributions. Applying the sigmoid function produces a bad-credit probability of 0.9597154965. Because this exceeds the 0.50 threshold, the reconstructed class is 1, labeled bad_credit. These are fitted model associations and applicant-specific score contributions, not claims that the features caused the prediction outcome or that bad credit will certainly occur."",
+  ""limitations"": [
+    ""Categorical coefficients and contributions are defined relative to the supplied one-hot reference categories, so they should not be interpreted as standalone causal effects."",
+    ""The probability is a model estimate rather than confirmation of the applicant's future credit outcome."",
+    ""Only the five strongest contributions are listed in top_features; the reconstructed score also includes the intercept and all other supplied feature contributions.""
+  ]
+}","{""explanation_possible"":true,""reconstructed_logit"":3.1706700155593546,""reconstructed_probability"":0.9597154964729071,""reconstructed_class"":1,""top_features"":[{""feature"":""foreign_worker=no"",""customer_value"":""no"",""coefficient"":0.9246035243,""transformed_value"":1.0,""contribution"":0.9246035243,""direction"":""increase_bad_credit_risk"",""explanation"":""This active indicator added 0.9246 to the model's bad-credit log-odds.""},{""feature"":""installment_rate=installment_rate_below_20_percent"",""customer_value"":""installment_rate_below_20_percent"",""coefficient"":0.8178230443,""transformed_value"":1.0,""contribution"":0.8178230443,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category added 0.8178 to the model's bad-credit log-odds.""},{""feature"":""duration_standardized"",""customer_value"":""48"",""coefficient"":0.2873191622,""transformed_value"":2.2610028777,""contribution"":0.6496294525,""direction"":""increase_bad_credit_risk"",""explanation"":""The standardized duration value of 2.2610, multiplied by its positive coefficient, added 0.6496 to the bad-credit log-odds.""},{""feature"":""property=real_estate"",""customer_value"":""real_estate"",""coefficient"":0.6071684096,""transformed_value"":1.0,""contribution"":0.6071684096,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category added 0.6072 to the model's bad-credit log-odds.""},{""feature"":""job=skilled_employee_or_official"",""customer_value"":""skilled_employee_or_official"",""coefficient"":0.5538300296,""transformed_value"":1.0,""contribution"":0.5538300296,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category added 0.5538 to the model's bad-credit log-odds.""}],""model_explanation"":""Starting from the intercept of -0.2895 and summing all supplied applicant-specific contributions gives a logit of 3.1706700156. The strongest contributions by absolute magnitude were foreign_worker=no (+0.9246), installment_rate=installment_rate_below_20_percent (+0.8178), duration_standardized (+0.6496), property=real_estate (+0.6072), and job=skilled_employee_or_official (+0.5538); each increased the model's bad-credit log-odds. Other supplied features included both increasing and decreasing contributions. Applying the sigmoid function produces a bad-credit probability of 0.9597154965. Because this exceeds the 0.50 threshold, the reconstructed class is 1, labeled bad_credit. These are fitted model associations and applicant-specific score contributions, not claims that the features caused the prediction outcome or that bad credit will certainly occur."",""limitations"":[""Categorical coefficients and contributions are defined relative to the supplied one-hot reference categories, so they should not be interpreted as standalone causal effects."",""The probability is a model estimate rather than confirmation of the applicant's future credit outcome."",""Only the five strongest contributions are listed in top_features; the reconstructed score also includes the intercept and all other supplied feature contributions.""]}","Starting from the intercept of -0.2895 and summing all supplied applicant-specific contributions gives a logit of 3.1706700156. The strongest contributions by absolute magnitude were foreign_worker=no (+0.9246), installment_rate=installment_rate_below_20_percent (+0.8178), duration_standardized (+0.6496), property=real_estate (+0.6072), and job=skilled_employee_or_official (+0.5538); each increased the model's bad-credit log-odds. Other supplied features included both increasing and decreasing contributions. Applying the sigmoid function produces a bad-credit probability of 0.9597154965. Because this exceeds the 0.50 threshold, the reconstructed class is 1, labeled bad_credit. These are fitted model associations and applicant-specific score contributions, not claims that the features caused the prediction outcome or that bad credit will certainly occur.",True,3.1706700155593546,0.9597154964729071,1,bad_credit,"[""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""duration_standardized"", ""property=real_estate"", ""job=skilled_employee_or_official""]",4704,1034,5738,,1,1,,0,,,,1.0,1.0,1.3304890522647384e-11,0.0,5,0,[]
+explanation,1,348,SGC0349,customer_prediction_only,gpt-5.6-sol,1.0,chatcmpl-EGje10VPdYVeEghFnmsvtahWrcER0,"CASE
+Applicant ID: SGC0349
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 1 (no_checking_account)
+duration: 12
+credit_history: 4 (all_credits_at_this_bank_paid_back_duly)
+purpose: 0 (others)
+amount: 2121
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 3 (employed_1_to_below_4_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 30
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 2 (two_or_three_credits)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.5004630941
+Predicted class: 1
+Classification label: bad_credit
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",1153,121,"{""explanation_possible"":false,""reconstructed_logit"":null,""reconstructed_probability"":null,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The supplied model output assigns a bad-credit probability of 0.5004630941. Because this is slightly above the 0.50 classification threshold, the resulting class is 1, labeled bad_credit. However, the supplied information does not include the fitted intercept, feature coefficients, preprocessing or encoding details, or transformed applicant values. Therefore, it is not possible to determine which applicant features contributed most strongly, their contribution directions, or to independently reconstruct the model's logit and probability. The prediction is a model estimate, not confirmation that the applicant will have bad credit."",""limitations"":[""The fitted logistic-regression intercept and coefficients were not supplied."",""The model's preprocessing, categorical encoding, scaling, and exact transformed feature values were not supplied."",""Feature-level contributions and rankings cannot be calculated from raw applicant values alone."",""The reported probability and logit cannot be independently reconstructed from the model parameters; only the threshold-based class can be verified from the supplied probability.""]}","{""explanation_possible"":false,""reconstructed_logit"":null,""reconstructed_probability"":null,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The supplied model output assigns a bad-credit probability of 0.5004630941. Because this is slightly above the 0.50 classification threshold, the resulting class is 1, labeled bad_credit. However, the supplied information does not include the fitted intercept, feature coefficients, preprocessing or encoding details, or transformed applicant values. Therefore, it is not possible to determine which applicant features contributed most strongly, their contribution directions, or to independently reconstruct the model's logit and probability. The prediction is a model estimate, not confirmation that the applicant will have bad credit."",""limitations"":[""The fitted logistic-regression intercept and coefficients were not supplied."",""The model's preprocessing, categorical encoding, scaling, and exact transformed feature values were not supplied."",""Feature-level contributions and rankings cannot be calculated from raw applicant values alone."",""The reported probability and logit cannot be independently reconstructed from the model parameters; only the threshold-based class can be verified from the supplied probability.""]}","The supplied model output assigns a bad-credit probability of 0.5004630941. Because this is slightly above the 0.50 classification threshold, the resulting class is 1, labeled bad_credit. However, the supplied information does not include the fitted intercept, feature coefficients, preprocessing or encoding details, or transformed applicant values. Therefore, it is not possible to determine which applicant features contributed most strongly, their contribution directions, or to independently reconstruct the model's logit and probability. The prediction is a model estimate, not confirmation that the applicant will have bad credit.",False,0.0018523769248979804,0.5004630940988066,1,bad_credit,"[""credit_history=all_credits_at_this_bank_paid_back_duly"", ""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""personal_status_sex=male_married_or_widowed"", ""number_credits=two_or_three_credits""]",1041,563,1604,,1,1,1.0,0,,,,,,,0.0,0,0,[]
+explanation,1,348,SGC0349,textual_description,gpt-5.6-sol,1.0,chatcmpl-EGjeAYPzH69jLL3UpA2v3sSSeFPiF,"CASE
+Applicant ID: SGC0349
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 1 (no_checking_account)
+duration: 12
+credit_history: 4 (all_credits_at_this_bank_paid_back_duly)
+purpose: 0 (others)
+amount: 2121
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 3 (employed_1_to_below_4_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 30
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 2 (two_or_three_credits)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.5004630941
+Predicted class: 1
+Classification label: bad_credit
+
+MODEL AND FEATURE DESCRIPTION
+The prediction was produced by logistic regression. Logistic regression forms
+a linear combination of transformed input features and learned coefficients,
+then applies the sigmoid function to obtain the positive-class probability.
+Positive applicant-specific model contributions increase the estimated
+bad-credit risk and negative contributions decrease it.
+
+Feature definitions:
+- status: Status of the debtor's checking account with the bank.
+- duration: Credit duration in months.
+- credit_history: History of compliance with previous or concurrent credit contracts.
+- purpose: Purpose for which the credit is needed.
+- amount: Credit amount in DM after an undocumented monotonic transformation; the original amount cannot be recovered.
+- savings: Debtor's savings-account category.
+- employment_duration: Duration of employment with the current employer.
+- installment_rate: Installments as a percentage of disposable income.
+- personal_status_sex: Combined personal-status and sex category from the codebook.
+- other_debtors: Whether another debtor or guarantor supports the credit.
+- present_residence: Length of time at the present residence.
+- property: The debtor's most valuable property category.
+- age: Age in years.
+- other_installment_plans: Installment plans with providers other than this bank.
+- housing: Housing arrangement.
+- number_credits: Number of current or previous credits at this bank.
+- job: Employment or job qualification category.
+- people_liable: Number of people financially dependent on the debtor.
+- telephone: Whether a landline is registered in the customer's name.
+- foreign_worker: Whether the debtor is a foreign worker.
+
+The fitted intercept, fitted coefficients, transformed applicant values, and
+applicant-specific contributions are not supplied in this condition.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",2992,369,"{""explanation_possible"":false,""reconstructed_logit"":0.00185237693,""reconstructed_probability"":0.5004630941,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The reported bad-credit probability of 0.5004630941 corresponds to an approximate logit of 0.00185237693. Because the probability is slightly above the 0.50 classification threshold, the model assigned class 1 (bad_credit). The supplied information does not include the intercept, fitted coefficients, exact transformed applicant values, or applicant-specific contributions, so it is not possible to identify which features drove the score or whether any particular feature increased or decreased the model's bad-credit log-odds. This is a model estimate, not confirmation that the applicant will have bad credit."",""limitations"":[""The fitted intercept and feature coefficients are not supplied."",""The exact transformed applicant values are not supplied."",""Applicant-specific feature contributions cannot be calculated or ranked."",""The reconstructed logit is derived from the reported probability and may reflect rounding in that probability."",""The probability is only 0.0004630941 above the classification threshold, but no additional precision or decision-margin information is supplied.""]}","{""explanation_possible"":false,""reconstructed_logit"":0.00185237693,""reconstructed_probability"":0.5004630941,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The reported bad-credit probability of 0.5004630941 corresponds to an approximate logit of 0.00185237693. Because the probability is slightly above the 0.50 classification threshold, the model assigned class 1 (bad_credit). The supplied information does not include the intercept, fitted coefficients, exact transformed applicant values, or applicant-specific contributions, so it is not possible to identify which features drove the score or whether any particular feature increased or decreased the model's bad-credit log-odds. This is a model estimate, not confirmation that the applicant will have bad credit."",""limitations"":[""The fitted intercept and feature coefficients are not supplied."",""The exact transformed applicant values are not supplied."",""Applicant-specific feature contributions cannot be calculated or ranked."",""The reconstructed logit is derived from the reported probability and may reflect rounding in that probability."",""The probability is only 0.0004630941 above the classification threshold, but no additional precision or decision-margin information is supplied.""]}","The reported bad-credit probability of 0.5004630941 corresponds to an approximate logit of 0.00185237693. Because the probability is slightly above the 0.50 classification threshold, the model assigned class 1 (bad_credit). The supplied information does not include the intercept, fitted coefficients, exact transformed applicant values, or applicant-specific contributions, so it is not possible to identify which features drove the score or whether any particular feature increased or decreased the model's bad-credit log-odds. This is a model estimate, not confirmation that the applicant will have bad credit.",False,0.0018523769248979804,0.5004630940988066,1,bad_credit,"[""credit_history=all_credits_at_this_bank_paid_back_duly"", ""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""personal_status_sex=male_married_or_widowed"", ""number_credits=two_or_three_credits""]",1380,521,1901,,1,1,1.0,0,,,,,,,0.0,0,0,[]
+explanation,1,348,SGC0349,training_code_only,gpt-5.6-sol,1.0,chatcmpl-EGjeKP8M7584ShlzSm1X5A3NELrR2,"CASE
+Applicant ID: SGC0349
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 1 (no_checking_account)
+duration: 12
+credit_history: 4 (all_credits_at_this_bank_paid_back_duly)
+purpose: 0 (others)
+amount: 2121
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 3 (employed_1_to_below_4_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 30
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 2 (two_or_three_credits)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.5004630941
+Predicted class: 1
+Classification label: bad_credit
+
+TRAINING CODE
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+numeric_features = ['duration', 'amount', 'age']
+categorical_features = [
+    ""status"", ""credit_history"", ""purpose"", ""savings"",
+    ""employment_duration"", ""installment_rate"", ""personal_status_sex"",
+    ""other_debtors"", ""present_residence"", ""property"",
+    ""other_installment_plans"", ""housing"", ""number_credits"", ""job"",
+    ""people_liable"", ""telephone"", ""foreign_worker"",
+]
+
+# y_bad_credit was recoded so 1=bad credit and 0=good credit.
+preprocessor = ColumnTransformer([
+    (""numeric"", StandardScaler(), numeric_features),
+    (""categorical"", OneHotEncoder(
+        drop=""first"", handle_unknown=""ignore"", sparse_output=False
+    ), categorical_features),
+])
+pipeline = Pipeline([
+    (""preprocessor"", preprocessor),
+    (""logistic_regression"", LogisticRegression(
+        max_iter=2000, random_state=42
+    )),
+])
+pipeline.fit(X_train, y_train)
+probability_bad_credit = pipeline.predict_proba(customer)[0, 1]
+predicted_class = int(probability_bad_credit >= 0.5)
+```
+
+This condition shows how the model was trained, but it does not contain the
+learned intercept, learned coefficients, or fitted scaling statistics.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",2494,236,"{""explanation_possible"":false,""reconstructed_logit"":0.0018523769,""reconstructed_probability"":0.5004630941,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The supplied probability corresponds to a bad-credit logit of approximately 0.0018523769. Because the bad-credit probability, 0.5004630941, is slightly above the 0.50 classification threshold, the model assigned class 1 (bad_credit). However, the supplied information does not support an applicant-level feature attribution: it is not possible to identify which features most increased or decreased the model's bad-credit log-odds. This is a model prediction, not confirmation that the applicant will have a bad credit outcome."",""limitations"":[""The learned logistic-regression intercept and coefficients were not supplied, so individual feature contributions cannot be calculated or ranked."",""The fitted StandardScaler means and scales were not supplied, so the transformed values for duration, amount, and age cannot be reconstructed."",""The fitted OneHotEncoder category sets and resulting encoded feature layout were not supplied, so the exact categorical design vector cannot be reconstructed."",""The probability and class can be checked against the threshold, but the full model score cannot be independently reconstructed from the applicant features.""]}","{""explanation_possible"":false,""reconstructed_logit"":0.0018523769,""reconstructed_probability"":0.5004630941,""reconstructed_class"":1,""top_features"":[],""model_explanation"":""The supplied probability corresponds to a bad-credit logit of approximately 0.0018523769. Because the bad-credit probability, 0.5004630941, is slightly above the 0.50 classification threshold, the model assigned class 1 (bad_credit). However, the supplied information does not support an applicant-level feature attribution: it is not possible to identify which features most increased or decreased the model's bad-credit log-odds. This is a model prediction, not confirmation that the applicant will have a bad credit outcome."",""limitations"":[""The learned logistic-regression intercept and coefficients were not supplied, so individual feature contributions cannot be calculated or ranked."",""The fitted StandardScaler means and scales were not supplied, so the transformed values for duration, amount, and age cannot be reconstructed."",""The fitted OneHotEncoder category sets and resulting encoded feature layout were not supplied, so the exact categorical design vector cannot be reconstructed."",""The probability and class can be checked against the threshold, but the full model score cannot be independently reconstructed from the applicant features.""]}","The supplied probability corresponds to a bad-credit logit of approximately 0.0018523769. Because the bad-credit probability, 0.5004630941, is slightly above the 0.50 classification threshold, the model assigned class 1 (bad_credit). However, the supplied information does not support an applicant-level feature attribution: it is not possible to identify which features most increased or decreased the model's bad-credit log-odds. This is a model prediction, not confirmation that the applicant will have a bad credit outcome.",False,0.0018523769248979804,0.5004630940988066,1,bad_credit,"[""credit_history=all_credits_at_this_bank_paid_back_duly"", ""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""personal_status_sex=male_married_or_widowed"", ""number_credits=two_or_three_credits""]",1347,632,1979,,1,1,1.0,0,,,,,,,0.0,0,0,[]
+explanation,1,348,SGC0349,learned_parameters,gpt-5.6-sol,1.0,chatcmpl-EGjeVU94uWfW1s4zgBdlb1E9w5QXd,"CASE
+Applicant ID: SGC0349
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 1 (no_checking_account)
+duration: 12
+credit_history: 4 (all_credits_at_this_bank_paid_back_duly)
+purpose: 0 (others)
+amount: 2121
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 3 (employed_1_to_below_4_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 30
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 2 (two_or_three_credits)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.5004630941
+Predicted class: 1
+Classification label: bad_credit
+
+LEARNED MODEL PARAMETERS
+Model type: logistic regression
+Positive class: 1 = bad credit risk
+Equation: z = intercept + sum(coefficient_j * transformed_value_j)
+Probability: sigmoid(z)
+Numeric preprocessing: (raw value - training mean) / training standard deviation
+Categorical preprocessing: one-hot encoding with the first category as reference.
+Intercept: -0.2894631489
+
+FITTED NUMERIC SCALING
+| feature | training_mean | training_standard_deviation |
+|---|---:|---:|
+| duration | 20.7614285714 | 12.0471193102 |
+| amount | 3212.2128571429 | 2797.1376735320 |
+| age | 35.7928571429 | 11.0970372034 |
+
+ONE-HOT REFERENCE CATEGORIES
+- status: 1 (no_checking_account)
+- credit_history: 0 (delay_in_paying_in_the_past)
+- purpose: 0 (others)
+- savings: 1 (unknown_or_no_savings_account)
+- employment_duration: 1 (unemployed)
+- installment_rate: 1 (installment_rate_at_least_35_percent)
+- personal_status_sex: 1 (male_divorced_or_separated)
+- other_debtors: 1 (none)
+- present_residence: 1 (residence_below_1_year)
+- property: 1 (unknown_or_no_property)
+- other_installment_plans: 1 (bank)
+- housing: 1 (for_free)
+- number_credits: 1 (one_credit)
+- job: 1 (unemployed_or_unskilled_non_resident)
+- people_liable: 1 (three_or_more_people_liable)
+- telephone: 1 (no_telephone)
+- foreign_worker: 1 (yes)
+
+| transformed_feature | fitted_coefficient | transformed_customer_value |
+|---|---:|---:|
+| age_standardized | -0.0081267242 | -0.5220183583 |
+| amount_standardized | 0.4061854968 | -0.3901176790 |
+| credit_history=all_credits_at_this_bank_paid_back_duly | -1.3303229846 | 1.0000000000 |
+| credit_history=critical_account_or_other_credits_elsewhere | 0.4888820981 | 0.0000000000 |
+| credit_history=existing_credits_paid_back_duly_until_now | -0.8277684084 | 0.0000000000 |
+| credit_history=no_credits_taken_or_all_paid_back_duly | -0.0581539415 | 0.0000000000 |
+| duration_standardized | 0.2873191622 | -0.7272633686 |
+| employment_duration=employed_1_to_below_4_years | -0.1455202068 | 1.0000000000 |
+| employment_duration=employed_4_to_below_7_years | -0.8747210416 | 0.0000000000 |
+| employment_duration=employed_at_least_7_years | -0.2910465925 | 0.0000000000 |
+| employment_duration=employed_below_1_year | -0.0947637589 | 0.0000000000 |
+| foreign_worker=no | 0.9246035243 | 1.0000000000 |
+| housing=own | -0.3255176570 | 0.0000000000 |
+| housing=rent | -0.3798455550 | 1.0000000000 |
+| installment_rate=installment_rate_20_to_below_25_percent | 0.4636842837 | 0.0000000000 |
+| installment_rate=installment_rate_25_to_below_35_percent | 0.2461032348 | 0.0000000000 |
+| installment_rate=installment_rate_below_20_percent | 0.8178230443 | 1.0000000000 |
+| job=manager_self_employed_or_highly_qualified_employee | 0.5540419369 | 0.0000000000 |
+| job=skilled_employee_or_official | 0.5538300296 | 1.0000000000 |
+| job=unskilled_resident | 0.4160525244 | 0.0000000000 |
+| number_credits=at_least_six_credits | -0.0718545217 | 0.0000000000 |
+| number_credits=four_or_five_credits | 0.1610654323 | 0.0000000000 |
+| number_credits=two_or_three_credits | 0.5681976567 | 1.0000000000 |
+| other_debtors=co_applicant | 0.3252315198 | 0.0000000000 |
+| other_debtors=guarantor | -0.9594853869 | 0.0000000000 |
+| other_installment_plans=none | -0.4805033249 | 1.0000000000 |
+| other_installment_plans=stores | -0.0437096143 | 0.0000000000 |
+| people_liable=zero_to_two_people_liable | -0.2104750711 | 1.0000000000 |
+| personal_status_sex=female_non_single_or_male_single | 0.2431963319 | 0.0000000000 |
+| personal_status_sex=female_single | -0.1684095768 | 0.0000000000 |
+| personal_status_sex=male_married_or_widowed | -0.6176617098 | 1.0000000000 |
+| present_residence=residence_1_to_below_4_years | 0.4971910547 | 1.0000000000 |
+| present_residence=residence_4_to_below_7_years | 0.4109739249 | 0.0000000000 |
+| present_residence=residence_at_least_7_years | 0.2086160973 | 0.0000000000 |
+| property=building_savings_agreement_or_life_insurance | -0.0058302304 | 0.0000000000 |
+| property=car_or_other_property | 0.4571736141 | 1.0000000000 |
+| property=real_estate | 0.6071684096 | 0.0000000000 |
+| purpose=business | -0.8212706923 | 0.0000000000 |
+| purpose=domestic_appliances | 0.2369765041 | 0.0000000000 |
+| purpose=furniture_or_equipment | -0.7090760876 | 0.0000000000 |
+| purpose=new_car | -1.5925077719 | 0.0000000000 |
+| purpose=radio_or_television | -0.1969691109 | 0.0000000000 |
+| purpose=repairs | 0.3015971280 | 0.0000000000 |
+| purpose=retraining | -0.4704448700 | 0.0000000000 |
+| purpose=used_car | -0.5521915592 | 0.0000000000 |
+| purpose=vacation | -0.5440597221 | 0.0000000000 |
+| savings=savings_100_to_below_500_DM | -0.3626509791 | 0.0000000000 |
+| savings=savings_500_to_below_1000_DM | -1.1394261896 | 0.0000000000 |
+| savings=savings_at_least_1000_DM | -0.8673723767 | 0.0000000000 |
+| savings=savings_below_100_DM | -0.1970421085 | 0.0000000000 |
+| status=checking_balance_0_to_below_200_DM | -0.9789646204 | 0.0000000000 |
+| status=checking_balance_at_least_200_DM_or_salary_account | -1.5420877385 | 0.0000000000 |
+| status=checking_balance_below_0_DM | -0.2317454163 | 0.0000000000 |
+| telephone=telephone_under_customer_name | -0.3011228914 | 0.0000000000 |
+
+Applicant-specific contributions are not precomputed in this condition.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",6406,665,"{""explanation_possible"":true,""reconstructed_logit"":0.0018523765,""reconstructed_probability"":0.5004630941,""reconstructed_class"":1,""top_features"":[{""feature"":""credit_history=all_credits_at_this_bank_paid_back_duly"",""customer_value"":""4 (all_credits_at_this_bank_paid_back_duly)"",""coefficient"":-1.3303229846,""transformed_value"":1.0,""contribution"":-1.3303229846,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -1.330323 to the bad-credit log-odds, the strongest decreasing contribution for this applicant.""},{""feature"":""foreign_worker=no"",""customer_value"":""2 (no)"",""coefficient"":0.9246035243,""transformed_value"":1.0,""contribution"":0.9246035243,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category contributed +0.924604 to the bad-credit log-odds.""},{""feature"":""installment_rate=installment_rate_below_20_percent"",""customer_value"":""4 (installment_rate_below_20_percent)"",""coefficient"":0.8178230443,""transformed_value"":1.0,""contribution"":0.8178230443,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category contributed +0.817823 to the bad-credit log-odds.""},{""feature"":""personal_status_sex=male_married_or_widowed"",""customer_value"":""3 (male_married_or_widowed)"",""coefficient"":-0.6176617098,""transformed_value"":1.0,""contribution"":-0.6176617098,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -0.617662 to the bad-credit log-odds.""},{""feature"":""number_credits=two_or_three_credits"",""customer_value"":""2 (two_or_three_credits)"",""coefficient"":0.5681976567,""transformed_value"":1.0,""contribution"":0.5681976567,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category contributed +0.568198 to the bad-credit log-odds.""}],""model_explanation"":""Using the supplied intercept, coefficients, and transformed applicant values, the model's logit reconstructs to approximately 0.00185238, corresponding to a bad-credit probability of 0.5004630941. The strongest decreasing contributions were credit_history=all_credits_at_this_bank_paid_back_duly (-1.330323) and personal_status_sex=male_married_or_widowed (-0.617662). The strongest increasing contributions were foreign_worker=no (+0.924604), installment_rate=installment_rate_below_20_percent (+0.817823), and number_credits=two_or_three_credits (+0.568198). These and the remaining contributions nearly offset one another, leaving the probability only about 0.000463 above the 0.50 threshold. Therefore, the model assigned class 1 (bad credit risk). This is a model prediction based on fitted associations, not confirmation that the applicant will have bad credit."",""limitations"":[""Contributions describe associations within this fitted logistic-regression model and do not establish that any applicant characteristic causes bad credit risk."",""The prediction is extremely close to the 0.50 classification threshold, so the class assignment depends on a very small positive margin."",""The supplied coefficients and transformed values are rounded; an independently summed logit may differ from the original model calculation by a negligible rounding amount."",""No uncertainty estimates, validation metrics, training-data details beyond scaling values, or evidence about model reliability are supplied.""]}","{""explanation_possible"":true,""reconstructed_logit"":0.0018523765,""reconstructed_probability"":0.5004630941,""reconstructed_class"":1,""top_features"":[{""feature"":""credit_history=all_credits_at_this_bank_paid_back_duly"",""customer_value"":""4 (all_credits_at_this_bank_paid_back_duly)"",""coefficient"":-1.3303229846,""transformed_value"":1.0,""contribution"":-1.3303229846,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -1.330323 to the bad-credit log-odds, the strongest decreasing contribution for this applicant.""},{""feature"":""foreign_worker=no"",""customer_value"":""2 (no)"",""coefficient"":0.9246035243,""transformed_value"":1.0,""contribution"":0.9246035243,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category contributed +0.924604 to the bad-credit log-odds.""},{""feature"":""installment_rate=installment_rate_below_20_percent"",""customer_value"":""4 (installment_rate_below_20_percent)"",""coefficient"":0.8178230443,""transformed_value"":1.0,""contribution"":0.8178230443,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category contributed +0.817823 to the bad-credit log-odds.""},{""feature"":""personal_status_sex=male_married_or_widowed"",""customer_value"":""3 (male_married_or_widowed)"",""coefficient"":-0.6176617098,""transformed_value"":1.0,""contribution"":-0.6176617098,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -0.617662 to the bad-credit log-odds.""},{""feature"":""number_credits=two_or_three_credits"",""customer_value"":""2 (two_or_three_credits)"",""coefficient"":0.5681976567,""transformed_value"":1.0,""contribution"":0.5681976567,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category contributed +0.568198 to the bad-credit log-odds.""}],""model_explanation"":""Using the supplied intercept, coefficients, and transformed applicant values, the model's logit reconstructs to approximately 0.00185238, corresponding to a bad-credit probability of 0.5004630941. The strongest decreasing contributions were credit_history=all_credits_at_this_bank_paid_back_duly (-1.330323) and personal_status_sex=male_married_or_widowed (-0.617662). The strongest increasing contributions were foreign_worker=no (+0.924604), installment_rate=installment_rate_below_20_percent (+0.817823), and number_credits=two_or_three_credits (+0.568198). These and the remaining contributions nearly offset one another, leaving the probability only about 0.000463 above the 0.50 threshold. Therefore, the model assigned class 1 (bad credit risk). This is a model prediction based on fitted associations, not confirmation that the applicant will have bad credit."",""limitations"":[""Contributions describe associations within this fitted logistic-regression model and do not establish that any applicant characteristic causes bad credit risk."",""The prediction is extremely close to the 0.50 classification threshold, so the class assignment depends on a very small positive margin."",""The supplied coefficients and transformed values are rounded; an independently summed logit may differ from the original model calculation by a negligible rounding amount."",""No uncertainty estimates, validation metrics, training-data details beyond scaling values, or evidence about model reliability are supplied.""]}","Using the supplied intercept, coefficients, and transformed applicant values, the model's logit reconstructs to approximately 0.00185238, corresponding to a bad-credit probability of 0.5004630941. The strongest decreasing contributions were credit_history=all_credits_at_this_bank_paid_back_duly (-1.330323) and personal_status_sex=male_married_or_widowed (-0.617662). The strongest increasing contributions were foreign_worker=no (+0.924604), installment_rate=installment_rate_below_20_percent (+0.817823), and number_credits=two_or_three_credits (+0.568198). These and the remaining contributions nearly offset one another, leaving the probability only about 0.000463 above the 0.50 threshold. Therefore, the model assigned class 1 (bad credit risk). This is a model prediction based on fitted associations, not confirmation that the applicant will have bad credit.",True,0.0018523769248979804,0.5004630940988066,1,bad_credit,"[""credit_history=all_credits_at_this_bank_paid_back_duly"", ""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""personal_status_sex=male_married_or_widowed"", ""number_credits=two_or_three_credits""]",2903,1820,4723,,1,1,,0,,,,1.0,1.0,2.1393509186395932e-11,0.0,5,0,[]
+explanation,1,348,SGC0349,full_structured_package,gpt-5.6-sol,1.0,chatcmpl-EGjeuRfov86mFpZbp0R9aehRwRWVX,"CASE
+Applicant ID: SGC0349
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 1 (no_checking_account)
+duration: 12
+credit_history: 4 (all_credits_at_this_bank_paid_back_duly)
+purpose: 0 (others)
+amount: 2121
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 3 (employed_1_to_below_4_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 30
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 2 (two_or_three_credits)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.5004630941
+Predicted class: 1
+Classification label: bad_credit
+
+COMPLETE STRUCTURED EVIDENCE PACKAGE
+```json
+{
+  ""target"": {
+    ""positive_class"": ""bad_credit"",
+    ""positive_class_value"": 1,
+    ""negative_class"": ""good_credit"",
+    ""negative_class_value"": 0,
+    ""decision_threshold"": 0.5
+  },
+  ""formula"": {
+    ""logit"": ""intercept + sum(log_odds_contribution)"",
+    ""probability"": ""sigmoid(logit)"",
+    ""feature_contribution"": ""coefficient * transformed_customer_value""
+  },
+  ""intercept"": -0.28946314891139896,
+  ""numeric_scaling"": {
+    ""duration"": {
+      ""training_mean"": 20.76142857142857,
+      ""training_standard_deviation"": 12.047119310169938
+    },
+    ""amount"": {
+      ""training_mean"": 3212.212857142857,
+      ""training_standard_deviation"": 2797.137673531969
+    },
+    ""age"": {
+      ""training_mean"": 35.792857142857144,
+      ""training_standard_deviation"": 11.097037203410537
+    }
+  },
+  ""one_hot_reference_categories"": {
+    ""status"": ""1 (no_checking_account)"",
+    ""credit_history"": ""0 (delay_in_paying_in_the_past)"",
+    ""purpose"": ""0 (others)"",
+    ""savings"": ""1 (unknown_or_no_savings_account)"",
+    ""employment_duration"": ""1 (unemployed)"",
+    ""installment_rate"": ""1 (installment_rate_at_least_35_percent)"",
+    ""personal_status_sex"": ""1 (male_divorced_or_separated)"",
+    ""other_debtors"": ""1 (none)"",
+    ""present_residence"": ""1 (residence_below_1_year)"",
+    ""property"": ""1 (unknown_or_no_property)"",
+    ""other_installment_plans"": ""1 (bank)"",
+    ""housing"": ""1 (for_free)"",
+    ""number_credits"": ""1 (one_credit)"",
+    ""job"": ""1 (unemployed_or_unskilled_non_resident)"",
+    ""people_liable"": ""1 (three_or_more_people_liable)"",
+    ""telephone"": ""1 (no_telephone)"",
+    ""foreign_worker"": ""1 (yes)""
+  },
+  ""features"": [
+    {
+      ""feature"": ""age_standardized"",
+      ""coefficient"": -0.0081267242,
+      ""transformed_customer_value"": -0.5220183583,
+      ""log_odds_contribution"": 0.0042422993
+    },
+    {
+      ""feature"": ""amount_standardized"",
+      ""coefficient"": 0.4061854968,
+      ""transformed_customer_value"": -0.390117679,
+      ""log_odds_contribution"": -0.1584601433
+    },
+    {
+      ""feature"": ""credit_history=all_credits_at_this_bank_paid_back_duly"",
+      ""coefficient"": -1.3303229846,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -1.3303229846
+    },
+    {
+      ""feature"": ""credit_history=critical_account_or_other_credits_elsewhere"",
+      ""coefficient"": 0.4888820981,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""credit_history=existing_credits_paid_back_duly_until_now"",
+      ""coefficient"": -0.8277684084,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""credit_history=no_credits_taken_or_all_paid_back_duly"",
+      ""coefficient"": -0.0581539415,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""duration_standardized"",
+      ""coefficient"": 0.2873191622,
+      ""transformed_customer_value"": -0.7272633686,
+      ""log_odds_contribution"": -0.2089567017
+    },
+    {
+      ""feature"": ""employment_duration=employed_1_to_below_4_years"",
+      ""coefficient"": -0.1455202068,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.1455202068
+    },
+    {
+      ""feature"": ""employment_duration=employed_4_to_below_7_years"",
+      ""coefficient"": -0.8747210416,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""employment_duration=employed_at_least_7_years"",
+      ""coefficient"": -0.2910465925,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""employment_duration=employed_below_1_year"",
+      ""coefficient"": -0.0947637589,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""foreign_worker=no"",
+      ""coefficient"": 0.9246035243,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.9246035243
+    },
+    {
+      ""feature"": ""housing=own"",
+      ""coefficient"": -0.325517657,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""housing=rent"",
+      ""coefficient"": -0.379845555,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.379845555
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_20_to_below_25_percent"",
+      ""coefficient"": 0.4636842837,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_25_to_below_35_percent"",
+      ""coefficient"": 0.2461032348,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_below_20_percent"",
+      ""coefficient"": 0.8178230443,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.8178230443
+    },
+    {
+      ""feature"": ""job=manager_self_employed_or_highly_qualified_employee"",
+      ""coefficient"": 0.5540419369,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""job=skilled_employee_or_official"",
+      ""coefficient"": 0.5538300296,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.5538300296
+    },
+    {
+      ""feature"": ""job=unskilled_resident"",
+      ""coefficient"": 0.4160525244,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""number_credits=at_least_six_credits"",
+      ""coefficient"": -0.0718545217,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""number_credits=four_or_five_credits"",
+      ""coefficient"": 0.1610654323,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""number_credits=two_or_three_credits"",
+      ""coefficient"": 0.5681976567,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.5681976567
+    },
+    {
+      ""feature"": ""other_debtors=co_applicant"",
+      ""coefficient"": 0.3252315198,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""other_debtors=guarantor"",
+      ""coefficient"": -0.9594853869,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""other_installment_plans=none"",
+      ""coefficient"": -0.4805033249,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.4805033249
+    },
+    {
+      ""feature"": ""other_installment_plans=stores"",
+      ""coefficient"": -0.0437096143,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""people_liable=zero_to_two_people_liable"",
+      ""coefficient"": -0.2104750711,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.2104750711
+    },
+    {
+      ""feature"": ""personal_status_sex=female_non_single_or_male_single"",
+      ""coefficient"": 0.2431963319,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""personal_status_sex=female_single"",
+      ""coefficient"": -0.1684095768,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""personal_status_sex=male_married_or_widowed"",
+      ""coefficient"": -0.6176617098,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": -0.6176617098
+    },
+    {
+      ""feature"": ""present_residence=residence_1_to_below_4_years"",
+      ""coefficient"": 0.4971910547,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.4971910547
+    },
+    {
+      ""feature"": ""present_residence=residence_4_to_below_7_years"",
+      ""coefficient"": 0.4109739249,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""present_residence=residence_at_least_7_years"",
+      ""coefficient"": 0.2086160973,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""property=building_savings_agreement_or_life_insurance"",
+      ""coefficient"": -0.0058302304,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""property=car_or_other_property"",
+      ""coefficient"": 0.4571736141,
+      ""transformed_customer_value"": 1.0,
+      ""log_odds_contribution"": 0.4571736141
+    },
+    {
+      ""feature"": ""property=real_estate"",
+      ""coefficient"": 0.6071684096,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""purpose=business"",
+      ""coefficient"": -0.8212706923,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=domestic_appliances"",
+      ""coefficient"": 0.2369765041,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""purpose=furniture_or_equipment"",
+      ""coefficient"": -0.7090760876,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=new_car"",
+      ""coefficient"": -1.5925077719,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=radio_or_television"",
+      ""coefficient"": -0.1969691109,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=repairs"",
+      ""coefficient"": 0.301597128,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": 0.0
+    },
+    {
+      ""feature"": ""purpose=retraining"",
+      ""coefficient"": -0.47044487,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=used_car"",
+      ""coefficient"": -0.5521915592,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""purpose=vacation"",
+      ""coefficient"": -0.5440597221,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_100_to_below_500_DM"",
+      ""coefficient"": -0.3626509791,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_500_to_below_1000_DM"",
+      ""coefficient"": -1.1394261896,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_at_least_1000_DM"",
+      ""coefficient"": -0.8673723767,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""savings=savings_below_100_DM"",
+      ""coefficient"": -0.1970421085,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""status=checking_balance_0_to_below_200_DM"",
+      ""coefficient"": -0.9789646204,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""status=checking_balance_at_least_200_DM_or_salary_account"",
+      ""coefficient"": -1.5420877385,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""status=checking_balance_below_0_DM"",
+      ""coefficient"": -0.2317454163,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    },
+    {
+      ""feature"": ""telephone=telephone_under_customer_name"",
+      ""coefficient"": -0.3011228914,
+      ""transformed_customer_value"": 0.0,
+      ""log_odds_contribution"": -0.0
+    }
+  ],
+  ""calculation_check"": {
+    ""logit"": 0.0018523769248979804,
+    ""probability_bad_credit"": 0.5004630940988066,
+    ""predicted_class"": 1
+  }
+}
+```
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.",12904,787,"{
+  ""explanation_possible"": true,
+  ""reconstructed_logit"": 0.0018523769248979804,
+  ""reconstructed_probability"": 0.5004630940988066,
+  ""reconstructed_class"": 1,
+  ""top_features"": [
+    {
+      ""feature"": ""credit_history=all_credits_at_this_bank_paid_back_duly"",
+      ""customer_value"": ""4 (all_credits_at_this_bank_paid_back_duly)"",
+      ""coefficient"": -1.3303229846,
+      ""transformed_value"": 1.0,
+      ""contribution"": -1.3303229846,
+      ""direction"": ""decrease_bad_credit_risk"",
+      ""explanation"": ""This active category contributed -1.330323 to the bad-credit log-odds, the strongest applicant-specific contribution toward class 0.""
+    },
+    {
+      ""feature"": ""foreign_worker=no"",
+      ""customer_value"": ""2 (no)"",
+      ""coefficient"": 0.9246035243,
+      ""transformed_value"": 1.0,
+      ""contribution"": 0.9246035243,
+      ""direction"": ""increase_bad_credit_risk"",
+      ""explanation"": ""This active category contributed +0.924604 to the bad-credit log-odds, moving the model toward class 1.""
+    },
+    {
+      ""feature"": ""installment_rate=installment_rate_below_20_percent"",
+      ""customer_value"": ""4 (installment_rate_below_20_percent)"",
+      ""coefficient"": 0.8178230443,
+      ""transformed_value"": 1.0,
+      ""contribution"": 0.8178230443,
+      ""direction"": ""increase_bad_credit_risk"",
+      ""explanation"": ""This active category contributed +0.817823 to the bad-credit log-odds, moving the model toward class 1.""
+    },
+    {
+      ""feature"": ""personal_status_sex=male_married_or_widowed"",
+      ""customer_value"": ""3 (male_married_or_widowed)"",
+      ""coefficient"": -0.6176617098,
+      ""transformed_value"": 1.0,
+      ""contribution"": -0.6176617098,
+      ""direction"": ""decrease_bad_credit_risk"",
+      ""explanation"": ""This active category contributed -0.617662 to the bad-credit log-odds, moving the model toward class 0.""
+    },
+    {
+      ""feature"": ""number_credits=two_or_three_credits"",
+      ""customer_value"": ""2 (two_or_three_credits)"",
+      ""coefficient"": 0.5681976567,
+      ""transformed_value"": 1.0,
+      ""contribution"": 0.5681976567,
+      ""direction"": ""increase_bad_credit_risk"",
+      ""explanation"": ""This active category contributed +0.568198 to the bad-credit log-odds, moving the model toward class 1.""
+    }
+  ],
+  ""model_explanation"": ""The supplied intercept and all feature contributions reconstruct a bad-credit logit of 0.0018523769 and probability of 0.5004630941. Because this probability is just above the 0.50 threshold, the model assigned class 1, labeled bad_credit. The strongest contribution decreasing the modeled bad-credit log-odds was credit_history=all_credits_at_this_bank_paid_back_duly (-1.330323). personal_status_sex=male_married_or_widowed also decreased them (-0.617662). The strongest contributions increasing the bad-credit log-odds were foreign_worker=no (+0.924604), installment_rate=installment_rate_below_20_percent (+0.817823), and number_credits=two_or_three_credits (+0.568198). These and the remaining supplied contributions nearly offset one another, leaving the probability only 0.000463 above the decision threshold. These are fitted model associations, not causal effects, and the prediction is not confirmation that the applicant will have bad credit."",
+  ""limitations"": [
+    ""The probability is extremely close to the 0.50 threshold, so the class assignment is marginal rather than a strong separation from class 0."",
+    ""One-hot category contributions are interpreted within the supplied encoding and omitted reference categories; they are not standalone causal effects."",
+    ""No model performance, calibration, uncertainty, or validation evidence was supplied, so the reliability of the probability cannot be assessed."",
+    ""Only the supplied frozen-model calculation explains this output; it does not establish the applicant's future credit outcome.""
+  ]
+}","{""explanation_possible"":true,""reconstructed_logit"":0.0018523769248979804,""reconstructed_probability"":0.5004630940988066,""reconstructed_class"":1,""top_features"":[{""feature"":""credit_history=all_credits_at_this_bank_paid_back_duly"",""customer_value"":""4 (all_credits_at_this_bank_paid_back_duly)"",""coefficient"":-1.3303229846,""transformed_value"":1.0,""contribution"":-1.3303229846,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -1.330323 to the bad-credit log-odds, the strongest applicant-specific contribution toward class 0.""},{""feature"":""foreign_worker=no"",""customer_value"":""2 (no)"",""coefficient"":0.9246035243,""transformed_value"":1.0,""contribution"":0.9246035243,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category contributed +0.924604 to the bad-credit log-odds, moving the model toward class 1.""},{""feature"":""installment_rate=installment_rate_below_20_percent"",""customer_value"":""4 (installment_rate_below_20_percent)"",""coefficient"":0.8178230443,""transformed_value"":1.0,""contribution"":0.8178230443,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category contributed +0.817823 to the bad-credit log-odds, moving the model toward class 1.""},{""feature"":""personal_status_sex=male_married_or_widowed"",""customer_value"":""3 (male_married_or_widowed)"",""coefficient"":-0.6176617098,""transformed_value"":1.0,""contribution"":-0.6176617098,""direction"":""decrease_bad_credit_risk"",""explanation"":""This active category contributed -0.617662 to the bad-credit log-odds, moving the model toward class 0.""},{""feature"":""number_credits=two_or_three_credits"",""customer_value"":""2 (two_or_three_credits)"",""coefficient"":0.5681976567,""transformed_value"":1.0,""contribution"":0.5681976567,""direction"":""increase_bad_credit_risk"",""explanation"":""This active category contributed +0.568198 to the bad-credit log-odds, moving the model toward class 1.""}],""model_explanation"":""The supplied intercept and all feature contributions reconstruct a bad-credit logit of 0.0018523769 and probability of 0.5004630941. Because this probability is just above the 0.50 threshold, the model assigned class 1, labeled bad_credit. The strongest contribution decreasing the modeled bad-credit log-odds was credit_history=all_credits_at_this_bank_paid_back_duly (-1.330323). personal_status_sex=male_married_or_widowed also decreased them (-0.617662). The strongest contributions increasing the bad-credit log-odds were foreign_worker=no (+0.924604), installment_rate=installment_rate_below_20_percent (+0.817823), and number_credits=two_or_three_credits (+0.568198). These and the remaining supplied contributions nearly offset one another, leaving the probability only 0.000463 above the decision threshold. These are fitted model associations, not causal effects, and the prediction is not confirmation that the applicant will have bad credit."",""limitations"":[""The probability is extremely close to the 0.50 threshold, so the class assignment is marginal rather than a strong separation from class 0."",""One-hot category contributions are interpreted within the supplied encoding and omitted reference categories; they are not standalone causal effects."",""No model performance, calibration, uncertainty, or validation evidence was supplied, so the reliability of the probability cannot be assessed."",""Only the supplied frozen-model calculation explains this output; it does not establish the applicant's future credit outcome.""]}","The supplied intercept and all feature contributions reconstruct a bad-credit logit of 0.0018523769 and probability of 0.5004630941. Because this probability is just above the 0.50 threshold, the model assigned class 1, labeled bad_credit. The strongest contribution decreasing the modeled bad-credit log-odds was credit_history=all_credits_at_this_bank_paid_back_duly (-1.330323). personal_status_sex=male_married_or_widowed also decreased them (-0.617662). The strongest contributions increasing the bad-credit log-odds were foreign_worker=no (+0.924604), installment_rate=installment_rate_below_20_percent (+0.817823), and number_credits=two_or_three_credits (+0.568198). These and the remaining supplied contributions nearly offset one another, leaving the probability only 0.000463 above the decision threshold. These are fitted model associations, not causal effects, and the prediction is not confirmation that the applicant will have bad credit.",True,0.0018523769248979804,0.5004630940988066,1,bad_credit,"[""credit_history=all_credits_at_this_bank_paid_back_duly"", ""foreign_worker=no"", ""installment_rate=installment_rate_below_20_percent"", ""personal_status_sex=male_married_or_widowed"", ""number_credits=two_or_three_credits""]",4708,1182,5890,,1,1,,0,,,,1.0,1.0,2.1393509186395932e-11,0.0,5,0,[]

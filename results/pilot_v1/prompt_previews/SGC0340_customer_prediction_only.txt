@@ -1,0 +1,36 @@
+CASE
+Applicant ID: SGC0340
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 4 (checking_balance_at_least_200_DM_or_salary_account)
+duration: 12
+credit_history: 2 (no_credits_taken_or_all_paid_back_duly)
+purpose: 1 (new_car)
+amount: 1413
+savings: 4 (savings_500_to_below_1000_DM)
+employment_duration: 4 (employed_4_to_below_7_years)
+installment_rate: 3 (installment_rate_20_to_below_25_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 55
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 1 (yes)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.0033439220
+Predicted class: 0
+Classification label: good_credit
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.

@@ -1,0 +1,21 @@
+condition,customer_and_prediction,textual_description,training_code,learned_parameters,precomputed_contributions,exact_feature_explanation_possible,condition_label_visible_to_llm,sufficiency_rule_stated_to_llm,neutral_task_text
+customer_prediction_only,1,0,0,0,0,0,0,0,"TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations."
+textual_description,1,1,0,0,0,0,0,0,"TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations."
+training_code_only,1,0,1,0,0,0,0,0,"TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations."
+learned_parameters,1,0,0,1,0,1,0,0,"TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations."
+full_structured_package,1,0,0,1,1,1,0,0,"TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations."

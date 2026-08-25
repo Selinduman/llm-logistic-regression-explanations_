@@ -1,0 +1,130 @@
+CASE
+Applicant ID: SGC0159
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 2 (checking_balance_below_0_DM)
+duration: 48
+credit_history: 1 (critical_account_or_other_credits_elsewhere)
+purpose: 9 (retraining)
+amount: 6416
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 5 (employed_at_least_7_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 2 (female_non_single_or_male_single)
+other_debtors: 1 (none)
+present_residence: 3 (residence_4_to_below_7_years)
+property: 4 (real_estate)
+age: 59
+other_installment_plans: 3 (none)
+housing: 1 (for_free)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.9597154965
+Predicted class: 1
+Classification label: bad_credit
+
+LEARNED MODEL PARAMETERS
+Model type: logistic regression
+Positive class: 1 = bad credit risk
+Equation: z = intercept + sum(coefficient_j * transformed_value_j)
+Probability: sigmoid(z)
+Numeric preprocessing: (raw value - training mean) / training standard deviation
+Categorical preprocessing: one-hot encoding with the first category as reference.
+Intercept: -0.2894631489
+
+FITTED NUMERIC SCALING
+| feature | training_mean | training_standard_deviation |
+|---|---:|---:|
+| duration | 20.7614285714 | 12.0471193102 |
+| amount | 3212.2128571429 | 2797.1376735320 |
+| age | 35.7928571429 | 11.0970372034 |
+
+ONE-HOT REFERENCE CATEGORIES
+- status: 1 (no_checking_account)
+- credit_history: 0 (delay_in_paying_in_the_past)
+- purpose: 0 (others)
+- savings: 1 (unknown_or_no_savings_account)
+- employment_duration: 1 (unemployed)
+- installment_rate: 1 (installment_rate_at_least_35_percent)
+- personal_status_sex: 1 (male_divorced_or_separated)
+- other_debtors: 1 (none)
+- present_residence: 1 (residence_below_1_year)
+- property: 1 (unknown_or_no_property)
+- other_installment_plans: 1 (bank)
+- housing: 1 (for_free)
+- number_credits: 1 (one_credit)
+- job: 1 (unemployed_or_unskilled_non_resident)
+- people_liable: 1 (three_or_more_people_liable)
+- telephone: 1 (no_telephone)
+- foreign_worker: 1 (yes)
+
+| transformed_feature | fitted_coefficient | transformed_customer_value |
+|---|---:|---:|
+| age_standardized | -0.0081267242 | 2.0912917954 |
+| amount_standardized | 0.4061854968 | 1.1453805700 |
+| credit_history=all_credits_at_this_bank_paid_back_duly | -1.3303229846 | 0.0000000000 |
+| credit_history=critical_account_or_other_credits_elsewhere | 0.4888820981 | 1.0000000000 |
+| credit_history=existing_credits_paid_back_duly_until_now | -0.8277684084 | 0.0000000000 |
+| credit_history=no_credits_taken_or_all_paid_back_duly | -0.0581539415 | 0.0000000000 |
+| duration_standardized | 0.2873191622 | 2.2610028777 |
+| employment_duration=employed_1_to_below_4_years | -0.1455202068 | 0.0000000000 |
+| employment_duration=employed_4_to_below_7_years | -0.8747210416 | 0.0000000000 |
+| employment_duration=employed_at_least_7_years | -0.2910465925 | 1.0000000000 |
+| employment_duration=employed_below_1_year | -0.0947637589 | 0.0000000000 |
+| foreign_worker=no | 0.9246035243 | 1.0000000000 |
+| housing=own | -0.3255176570 | 0.0000000000 |
+| housing=rent | -0.3798455550 | 0.0000000000 |
+| installment_rate=installment_rate_20_to_below_25_percent | 0.4636842837 | 0.0000000000 |
+| installment_rate=installment_rate_25_to_below_35_percent | 0.2461032348 | 0.0000000000 |
+| installment_rate=installment_rate_below_20_percent | 0.8178230443 | 1.0000000000 |
+| job=manager_self_employed_or_highly_qualified_employee | 0.5540419369 | 0.0000000000 |
+| job=skilled_employee_or_official | 0.5538300296 | 1.0000000000 |
+| job=unskilled_resident | 0.4160525244 | 0.0000000000 |
+| number_credits=at_least_six_credits | -0.0718545217 | 0.0000000000 |
+| number_credits=four_or_five_credits | 0.1610654323 | 0.0000000000 |
+| number_credits=two_or_three_credits | 0.5681976567 | 0.0000000000 |
+| other_debtors=co_applicant | 0.3252315198 | 0.0000000000 |
+| other_debtors=guarantor | -0.9594853869 | 0.0000000000 |
+| other_installment_plans=none | -0.4805033249 | 1.0000000000 |
+| other_installment_plans=stores | -0.0437096143 | 0.0000000000 |
+| people_liable=zero_to_two_people_liable | -0.2104750711 | 1.0000000000 |
+| personal_status_sex=female_non_single_or_male_single | 0.2431963319 | 1.0000000000 |
+| personal_status_sex=female_single | -0.1684095768 | 0.0000000000 |
+| personal_status_sex=male_married_or_widowed | -0.6176617098 | 0.0000000000 |
+| present_residence=residence_1_to_below_4_years | 0.4971910547 | 0.0000000000 |
+| present_residence=residence_4_to_below_7_years | 0.4109739249 | 1.0000000000 |
+| present_residence=residence_at_least_7_years | 0.2086160973 | 0.0000000000 |
+| property=building_savings_agreement_or_life_insurance | -0.0058302304 | 0.0000000000 |
+| property=car_or_other_property | 0.4571736141 | 0.0000000000 |
+| property=real_estate | 0.6071684096 | 1.0000000000 |
+| purpose=business | -0.8212706923 | 0.0000000000 |
+| purpose=domestic_appliances | 0.2369765041 | 0.0000000000 |
+| purpose=furniture_or_equipment | -0.7090760876 | 0.0000000000 |
+| purpose=new_car | -1.5925077719 | 0.0000000000 |
+| purpose=radio_or_television | -0.1969691109 | 0.0000000000 |
+| purpose=repairs | 0.3015971280 | 0.0000000000 |
+| purpose=retraining | -0.4704448700 | 1.0000000000 |
+| purpose=used_car | -0.5521915592 | 0.0000000000 |
+| purpose=vacation | -0.5440597221 | 0.0000000000 |
+| savings=savings_100_to_below_500_DM | -0.3626509791 | 0.0000000000 |
+| savings=savings_500_to_below_1000_DM | -1.1394261896 | 0.0000000000 |
+| savings=savings_at_least_1000_DM | -0.8673723767 | 0.0000000000 |
+| savings=savings_below_100_DM | -0.1970421085 | 0.0000000000 |
+| status=checking_balance_0_to_below_200_DM | -0.9789646204 | 0.0000000000 |
+| status=checking_balance_at_least_200_DM_or_salary_account | -1.5420877385 | 0.0000000000 |
+| status=checking_balance_below_0_DM | -0.2317454163 | 1.0000000000 |
+| telephone=telephone_under_customer_name | -0.3011228914 | 0.0000000000 |
+
+Applicant-specific contributions are not precomputed in this condition.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.

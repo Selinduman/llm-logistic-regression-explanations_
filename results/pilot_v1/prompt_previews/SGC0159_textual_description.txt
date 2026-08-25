@@ -1,0 +1,68 @@
+CASE
+Applicant ID: SGC0159
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 2 (checking_balance_below_0_DM)
+duration: 48
+credit_history: 1 (critical_account_or_other_credits_elsewhere)
+purpose: 9 (retraining)
+amount: 6416
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 5 (employed_at_least_7_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 2 (female_non_single_or_male_single)
+other_debtors: 1 (none)
+present_residence: 3 (residence_4_to_below_7_years)
+property: 4 (real_estate)
+age: 59
+other_installment_plans: 3 (none)
+housing: 1 (for_free)
+number_credits: 1 (one_credit)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.9597154965
+Predicted class: 1
+Classification label: bad_credit
+
+MODEL AND FEATURE DESCRIPTION
+The prediction was produced by logistic regression. Logistic regression forms
+a linear combination of transformed input features and learned coefficients,
+then applies the sigmoid function to obtain the positive-class probability.
+Positive applicant-specific model contributions increase the estimated
+bad-credit risk and negative contributions decrease it.
+
+Feature definitions:
+- status: Status of the debtor's checking account with the bank.
+- duration: Credit duration in months.
+- credit_history: History of compliance with previous or concurrent credit contracts.
+- purpose: Purpose for which the credit is needed.
+- amount: Credit amount in DM after an undocumented monotonic transformation; the original amount cannot be recovered.
+- savings: Debtor's savings-account category.
+- employment_duration: Duration of employment with the current employer.
+- installment_rate: Installments as a percentage of disposable income.
+- personal_status_sex: Combined personal-status and sex category from the codebook.
+- other_debtors: Whether another debtor or guarantor supports the credit.
+- present_residence: Length of time at the present residence.
+- property: The debtor's most valuable property category.
+- age: Age in years.
+- other_installment_plans: Installment plans with providers other than this bank.
+- housing: Housing arrangement.
+- number_credits: Number of current or previous credits at this bank.
+- job: Employment or job qualification category.
+- people_liable: Number of people financially dependent on the debtor.
+- telephone: Whether a landline is registered in the customer's name.
+- foreign_worker: Whether the debtor is a foreign worker.
+
+The fitted intercept, fitted coefficients, transformed applicant values, and
+applicant-specific contributions are not supplied in this condition.
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.

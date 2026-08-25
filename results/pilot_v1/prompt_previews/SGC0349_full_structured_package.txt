@@ -1,0 +1,419 @@
+CASE
+Applicant ID: SGC0349
+Dataset target after recoding: 1 = bad credit risk; 0 = good credit risk
+Classification threshold: 0.50
+
+RAW APPLICANT INPUT
+status: 1 (no_checking_account)
+duration: 12
+credit_history: 4 (all_credits_at_this_bank_paid_back_duly)
+purpose: 0 (others)
+amount: 2121
+savings: 1 (unknown_or_no_savings_account)
+employment_duration: 3 (employed_1_to_below_4_years)
+installment_rate: 4 (installment_rate_below_20_percent)
+personal_status_sex: 3 (male_married_or_widowed)
+other_debtors: 1 (none)
+present_residence: 2 (residence_1_to_below_4_years)
+property: 2 (car_or_other_property)
+age: 30
+other_installment_plans: 3 (none)
+housing: 2 (rent)
+number_credits: 2 (two_or_three_credits)
+job: 3 (skilled_employee_or_official)
+people_liable: 2 (zero_to_two_people_liable)
+telephone: 1 (no_telephone)
+foreign_worker: 2 (no)
+
+MODEL OUTPUT TO BE EXPLAINED
+Bad-credit probability: 0.5004630941
+Predicted class: 1
+Classification label: bad_credit
+
+COMPLETE STRUCTURED EVIDENCE PACKAGE
+```json
+{
+  "target": {
+    "positive_class": "bad_credit",
+    "positive_class_value": 1,
+    "negative_class": "good_credit",
+    "negative_class_value": 0,
+    "decision_threshold": 0.5
+  },
+  "formula": {
+    "logit": "intercept + sum(log_odds_contribution)",
+    "probability": "sigmoid(logit)",
+    "feature_contribution": "coefficient * transformed_customer_value"
+  },
+  "intercept": -0.28946314891139896,
+  "numeric_scaling": {
+    "duration": {
+      "training_mean": 20.76142857142857,
+      "training_standard_deviation": 12.047119310169938
+    },
+    "amount": {
+      "training_mean": 3212.212857142857,
+      "training_standard_deviation": 2797.137673531969
+    },
+    "age": {
+      "training_mean": 35.792857142857144,
+      "training_standard_deviation": 11.097037203410537
+    }
+  },
+  "one_hot_reference_categories": {
+    "status": "1 (no_checking_account)",
+    "credit_history": "0 (delay_in_paying_in_the_past)",
+    "purpose": "0 (others)",
+    "savings": "1 (unknown_or_no_savings_account)",
+    "employment_duration": "1 (unemployed)",
+    "installment_rate": "1 (installment_rate_at_least_35_percent)",
+    "personal_status_sex": "1 (male_divorced_or_separated)",
+    "other_debtors": "1 (none)",
+    "present_residence": "1 (residence_below_1_year)",
+    "property": "1 (unknown_or_no_property)",
+    "other_installment_plans": "1 (bank)",
+    "housing": "1 (for_free)",
+    "number_credits": "1 (one_credit)",
+    "job": "1 (unemployed_or_unskilled_non_resident)",
+    "people_liable": "1 (three_or_more_people_liable)",
+    "telephone": "1 (no_telephone)",
+    "foreign_worker": "1 (yes)"
+  },
+  "features": [
+    {
+      "feature": "age_standardized",
+      "coefficient": -0.0081267242,
+      "transformed_customer_value": -0.5220183583,
+      "log_odds_contribution": 0.0042422993
+    },
+    {
+      "feature": "amount_standardized",
+      "coefficient": 0.4061854968,
+      "transformed_customer_value": -0.390117679,
+      "log_odds_contribution": -0.1584601433
+    },
+    {
+      "feature": "credit_history=all_credits_at_this_bank_paid_back_duly",
+      "coefficient": -1.3303229846,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": -1.3303229846
+    },
+    {
+      "feature": "credit_history=critical_account_or_other_credits_elsewhere",
+      "coefficient": 0.4888820981,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "credit_history=existing_credits_paid_back_duly_until_now",
+      "coefficient": -0.8277684084,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "credit_history=no_credits_taken_or_all_paid_back_duly",
+      "coefficient": -0.0581539415,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "duration_standardized",
+      "coefficient": 0.2873191622,
+      "transformed_customer_value": -0.7272633686,
+      "log_odds_contribution": -0.2089567017
+    },
+    {
+      "feature": "employment_duration=employed_1_to_below_4_years",
+      "coefficient": -0.1455202068,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": -0.1455202068
+    },
+    {
+      "feature": "employment_duration=employed_4_to_below_7_years",
+      "coefficient": -0.8747210416,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "employment_duration=employed_at_least_7_years",
+      "coefficient": -0.2910465925,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "employment_duration=employed_below_1_year",
+      "coefficient": -0.0947637589,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "foreign_worker=no",
+      "coefficient": 0.9246035243,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": 0.9246035243
+    },
+    {
+      "feature": "housing=own",
+      "coefficient": -0.325517657,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "housing=rent",
+      "coefficient": -0.379845555,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": -0.379845555
+    },
+    {
+      "feature": "installment_rate=installment_rate_20_to_below_25_percent",
+      "coefficient": 0.4636842837,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "installment_rate=installment_rate_25_to_below_35_percent",
+      "coefficient": 0.2461032348,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "installment_rate=installment_rate_below_20_percent",
+      "coefficient": 0.8178230443,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": 0.8178230443
+    },
+    {
+      "feature": "job=manager_self_employed_or_highly_qualified_employee",
+      "coefficient": 0.5540419369,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "job=skilled_employee_or_official",
+      "coefficient": 0.5538300296,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": 0.5538300296
+    },
+    {
+      "feature": "job=unskilled_resident",
+      "coefficient": 0.4160525244,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "number_credits=at_least_six_credits",
+      "coefficient": -0.0718545217,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "number_credits=four_or_five_credits",
+      "coefficient": 0.1610654323,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "number_credits=two_or_three_credits",
+      "coefficient": 0.5681976567,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": 0.5681976567
+    },
+    {
+      "feature": "other_debtors=co_applicant",
+      "coefficient": 0.3252315198,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "other_debtors=guarantor",
+      "coefficient": -0.9594853869,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "other_installment_plans=none",
+      "coefficient": -0.4805033249,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": -0.4805033249
+    },
+    {
+      "feature": "other_installment_plans=stores",
+      "coefficient": -0.0437096143,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "people_liable=zero_to_two_people_liable",
+      "coefficient": -0.2104750711,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": -0.2104750711
+    },
+    {
+      "feature": "personal_status_sex=female_non_single_or_male_single",
+      "coefficient": 0.2431963319,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "personal_status_sex=female_single",
+      "coefficient": -0.1684095768,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "personal_status_sex=male_married_or_widowed",
+      "coefficient": -0.6176617098,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": -0.6176617098
+    },
+    {
+      "feature": "present_residence=residence_1_to_below_4_years",
+      "coefficient": 0.4971910547,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": 0.4971910547
+    },
+    {
+      "feature": "present_residence=residence_4_to_below_7_years",
+      "coefficient": 0.4109739249,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "present_residence=residence_at_least_7_years",
+      "coefficient": 0.2086160973,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "property=building_savings_agreement_or_life_insurance",
+      "coefficient": -0.0058302304,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "property=car_or_other_property",
+      "coefficient": 0.4571736141,
+      "transformed_customer_value": 1.0,
+      "log_odds_contribution": 0.4571736141
+    },
+    {
+      "feature": "property=real_estate",
+      "coefficient": 0.6071684096,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "purpose=business",
+      "coefficient": -0.8212706923,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "purpose=domestic_appliances",
+      "coefficient": 0.2369765041,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "purpose=furniture_or_equipment",
+      "coefficient": -0.7090760876,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "purpose=new_car",
+      "coefficient": -1.5925077719,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "purpose=radio_or_television",
+      "coefficient": -0.1969691109,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "purpose=repairs",
+      "coefficient": 0.301597128,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": 0.0
+    },
+    {
+      "feature": "purpose=retraining",
+      "coefficient": -0.47044487,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "purpose=used_car",
+      "coefficient": -0.5521915592,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "purpose=vacation",
+      "coefficient": -0.5440597221,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "savings=savings_100_to_below_500_DM",
+      "coefficient": -0.3626509791,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "savings=savings_500_to_below_1000_DM",
+      "coefficient": -1.1394261896,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "savings=savings_at_least_1000_DM",
+      "coefficient": -0.8673723767,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "savings=savings_below_100_DM",
+      "coefficient": -0.1970421085,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "status=checking_balance_0_to_below_200_DM",
+      "coefficient": -0.9789646204,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "status=checking_balance_at_least_200_DM_or_salary_account",
+      "coefficient": -1.5420877385,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "status=checking_balance_below_0_DM",
+      "coefficient": -0.2317454163,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    },
+    {
+      "feature": "telephone=telephone_under_customer_name",
+      "coefficient": -0.3011228914,
+      "transformed_customer_value": 0.0,
+      "log_odds_contribution": -0.0
+    }
+  ],
+  "calculation_check": {
+    "logit": 0.0018523769248979804,
+    "probability_bad_credit": 0.5004630940988066,
+    "predicted_class": 1
+  }
+}
+```
+
+TASK
+Explain why the trained logistic-regression model produced this prediction for
+this applicant. Base your explanation only on the supplied information and
+explicitly identify any limitations.

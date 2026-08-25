@@ -1,0 +1,6 @@
+condition,explanation_possible_correct,appropriate_abstention,missing_model_information_identified,unsupported_feature_claim,logit_abs_error,probability_abs_error,reconstructed_class_error,top5_recall,direction_accuracy,contribution_mae,hallucination_rate,too_many_features,prompt_character_count,prompt_word_count,prompt_tokens,completion_tokens,total_tokens
+customer_prediction_only,1.0,1.0,1.0,0.0,,,,,,,0.0,0.0,1164.6666666666667,121.0,1044.3333333333333,596.0,1640.3333333333333
+full_structured_package,1.0,1.0,,0.0,,,,1.0,1.0,1.7250830393796452e-11,0.0,0.0,12915.333333333334,787.0,4711.333333333333,1106.6666666666667,5818.0
+learned_parameters,1.0,1.0,,0.0,,,,1.0,1.0,2.3917497612065592e-11,0.0,0.0,6416.333333333333,665.0,2906.3333333333335,2374.6666666666665,5281.0
+textual_description,1.0,1.0,1.0,0.0,,,,,,,0.0,0.0,3003.6666666666665,369.0,1383.3333333333333,756.3333333333334,2139.6666666666665
+training_code_only,1.0,1.0,1.0,0.0,,,,,,,0.0,0.0,2505.6666666666665,236.0,1350.3333333333333,649.6666666666666,2000.0
