@@ -8,7 +8,7 @@ logistic-regression model.
 
 -- Contents
 - `results/pilot_v1/`: pilot outputs and evaluation results
-- `results/pilot_v1/prompt_previews/`: exact prompts used in each condition
+- `results/pilot_v1/prompt_previews/`: prompts used in each condition
 
 -Experimental conditions
 
@@ -18,6 +18,6 @@ logistic-regression model.
 4. Learned parameters
 5. Full structured contribution package
 
--Neutral task
+-General prompt:
 
 - Explain why the trained logistic-regression model produced this prediction or this applicant. Base your explanation only on the supplied information and explicitly identify any limitations.
